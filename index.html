@@ -1,24 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chuck N Go</title>
-  <link rel="stylesheet" href="./assets/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <title>Chuck n Go</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <header class="row">
+        <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
+        <h1 class="col s10 center-align">Chuck N' Go</h1>
+        <h4 class="col s12 center-align hide-on-small-only">Description p</h4>
+    </header>
 
-  <header>
-    <h1>Chuck N Go</h1>
-  </header>
-
-  <main>
-    
-  </main>
-
-  <script src="./assets/script.js"></script>
-
+    <!--<section class="img is-justify-content-center">
+        <style>
+            section {
+                background-image: url('./assets/image/Chuck.jpg');
+                background-repeat: no-repeat;
+                margin-top: 90px;
+                padding: 450px;
+            }
+        </style>
+    </section> -->
+    <div class="row">
+      <div class="col s12 l6">
+        <section id="joke">
+          <div>
+            <h2 class="cnjoke center-align">A Chuck Norris joke to start your trip:</h2>
+            <p id="jokeP"></p>
+          </div>
+        </section>    
+        <section id="form" class>
+          <div>
+            <h3>How do you want to travel today?</h3>
+          </div>
+          <div>
+            <form>
+              <div id="mode" class="row">
+                <h4>Transportation Mode:</h4>
+                <input type="radio" name="modes" />
+                <label>Car</label>
+                <input type="radio" name="modes" />
+                <label>Walk</label>
+                <input type="radio" name="modes" />
+                <label>Bus</label>
+              </div>
+              <div id="route" class="row">
+                <div id="from" class="col s6">
+                  <h4>From</h4>
+                </div>
+                <div id="to" class="col s6">
+                  <h4>To</h4>
+                </div>
+                <div id="things" class="row">
+                  <h4>Things you want to see along your route:</h4>
+                  <input type="checkbox" name="things-input" />
+                  <label>Attractions</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Scenic Views</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Hotels</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Dining</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Entertainment</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+      <div class="col s12 l6 center-align">
+        <!-- iframe here-->
+        <img class="responsive-img" src="./assets/image/placeholderimg.png">
+      </div>
+  </div>
 </body>
+
 </html>
