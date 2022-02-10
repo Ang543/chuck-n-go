@@ -8,17 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <title>Chuck n Go</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <header class="top is-narrow">
-        <h1 class="title has-text-centered has-background-danger-light is-1">Chuck N' Go</h1>
+    <header class="row">
+        <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
+        <h1 class="col s10 center-align">Chuck N' Go</h1>
+        <h4 class="col s12 center-align hide-on-small-only">Description p</h4>
     </header>
 
-    <section class="img is-justify-content-center">
+    <!--<section class="img is-justify-content-center">
         <style>
             section {
                 background-image: url('./assets/image/Chuck.jpg');
@@ -27,7 +29,31 @@
                 padding: 450px;
             }
         </style>
-    </section>
+    </section> -->
+    <div class="row">
+      <div class="col s12 l6">
+        <section id="joke">
+          <div>
+            <h2 class="cnjoke center-align">A Chuck Norris joke to start your trip:</h2>
+            <p id="jokeP"></p>
+          </div>
+        </section>    
+        <section id="form" class>
+          <div>
+            <h2></h2>
+          </div>
+          <div>
+            <form>
+
+            </form>
+          </div>
+        </section>
+      </div>
+      <div class="col s12 l6">
+        <!-- iframe here-->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto id perspiciatis sunt magnam at quibusdam, mollitia ut neque aliquid eius debitis vitae quae sint, esse ipsam. Perferendis aspernatur ullam natus.</p>
+      </div>
+  </div>
 </body>
 
 </html>
