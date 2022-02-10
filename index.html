@@ -40,18 +40,47 @@
         </section>    
         <section id="form" class>
           <div>
-            <h2></h2>
+            <h3>How do you want to travel today?</h3>
           </div>
           <div>
             <form>
-
+              <div id="mode" class="row">
+                <h4>Transportation Mode:</h4>
+                <input type="radio" name="modes" />
+                <label>Car</label>
+                <input type="radio" name="modes" />
+                <label>Walk</label>
+                <input type="radio" name="modes" />
+                <label>Bus</label>
+              </div>
+              <div id="route" class="row">
+                <div id="from" class="col s6">
+                  <h4>From</h4>
+                </div>
+                <div id="to" class="col s6">
+                  <h4>To</h4>
+                </div>
+                <div id="things" class="row">
+                  <h4>Things you want to see along your route:</h4>
+                  <input type="checkbox" name="things-input" />
+                  <label>Attractions</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Scenic Views</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Hotels</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Dining</label>
+                  <input type="checkbox" name="things-input" />
+                  <label>Entertainment</label>
+                </div>
+              </div>
             </form>
           </div>
         </section>
       </div>
-      <div class="col s12 l6">
+      <div class="col s12 l6 center-align">
         <!-- iframe here-->
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto id perspiciatis sunt magnam at quibusdam, mollitia ut neque aliquid eius debitis vitae quae sint, esse ipsam. Perferendis aspernatur ullam natus.</p>
+        <img class="responsive-img" src="./assets/image/placeholderimg.png">
       </div>
   </div>
 </body>
