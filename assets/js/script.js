@@ -21,9 +21,25 @@ $("#mode").on("click", function() {
 
 //call opentrip to get attractions along route
 //salieu
+var getMapObject = function () {
+  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
+  fetch(response).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+    });
+  });
+};
+
+
+
+getMapObject();
+
 
 //allow user to save a trip
 //angelo
 
 
 //future problem-- what if user changes input
+
+
+
