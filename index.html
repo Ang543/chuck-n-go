@@ -46,19 +46,22 @@
             <form>
               <div id="mode" class="row">
                 <h4>Transportation Mode:</h4>
-                <input type="radio" name="modes" />
+                <input type="radio" name="modes" value="car" />
                 <label>Car</label>
-                <input type="radio" name="modes" />
+                <input type="radio" name="modes" value="walk" />
                 <label>Walk</label>
-                <input type="radio" name="modes" />
+                <input type="radio" name="modes" value="bus" />
                 <label>Bus</label>
               </div>
               <div id="route" class="row">
                 <div id="from" class="col s6">
                   <h4>From</h4>
+                  <textarea id="from-input">
+                  </textarea>
                 </div>
                 <div id="to" class="col s6">
                   <h4>To</h4>
+                  <textarea id="to-input"></textarea>
                 </div>
                 <div id="things" class="row">
                   <h4>Things you want to see along your route:</h4>
