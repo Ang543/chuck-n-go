@@ -1,15 +1,29 @@
+const jokeEl = document.getElementById('jokeP')
 let apiMq = "XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY";
 let apiOpenTrip = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
+function jokeData() {
+  fetch("https://api.chucknorris.io/jokes/random")
+    .then(response => {
+      if (!response.ok) {
+        throw Error("Error");
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data.value)
+      document.querySelector("#cnjoke")
+        
+    })
+    .catch(error => {
+      console.log(error)
+    });
+  }
 
-//capture user input for tansport mode
-//hannah
-$("#mode").on("click", function() {
-  var mode = document.querySelector('input[name="modes"]:checked').value;
-  console.log(mode);
-});
+  jokeData()
+
 //capture user input for to and from
 //angelo
 
