@@ -44,8 +44,9 @@ function jokeData() {
 
 $("#mode").on("click", function() {
   var modeChoice = document.querySelector('input[name="modes"]:checked').value;
-  console.log(mode);
+  console.log(modeChoice);
 });
+
 //capture user input for to and from
 //angelo
 
