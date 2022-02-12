@@ -9,15 +9,15 @@ This was our Front End Project.  We want to combine the comedy from Chuck Norris
     : Dennis Moloney
 
 ## License
-Here is a list of API's used in the making of Chuck N' Go
-    : https://www.mapbox.com/ ( used the map API for direction)
-    : https://www.figma.com/ (used for our starting wireframe)
-    : https://opentripmap.io/product (used this API for the amendities overlaying)
-    : https://materializecss.com/ (used for most of our CSS)
-    : http://www.icndb.com/api/ (used this API for the Chuck Norris Jokes)
+Here is a list of API's used in the making of Chuck N' Go:
+   <li>https://www.mapbox.com/ ( used the map API for direction)</li>
+   <li>https://www.figma.com/ (used for our starting wireframe)</li>
+   <li>https://opentripmap.io/product (used this API for the amendities overlaying)</li>
+   <li>https://materializecss.com/ (used for most of our CSS)</li>
+   <li>http://www.icndb.com/api/ (used this API for the Chuck Norris Jokes)</li>
 ---
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-## Repository
+
+## Repository  -  https://github.com/Ang543/chuck-n-go.git
 
 ## Website
 
@@ -25,4 +25,4 @@ Here is a list of API's used in the making of Chuck N' Go
 ![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChucknGo-screenshot.jpg)
 
 ## Wireframe
-![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChuckNgo–Figma.jp)
+![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChuckNgo–Figma.jpg)
