@@ -2,26 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <title>Chuck n Go</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+  <title>Chuck n Go</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <header class="row">
-        <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
-        <h1 class="col s10 center-align">Chuck N' Go</h1>
-        <h4 class="col s12 center-align hide-on-small-only">Description p</h4>
-        <h2 class="cnjoke center-align">A Chuck Norris joke to start your trip: <span id="jokeP"></span></h2>
-    </header>
+  <header class="row">
+    <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
+    <h1 class="col s10 center-align">Chuck N' Go</h1>
+    <h4 class="col s12 center-align hide-on-small-only">Description p</h4>
+    <h2 class="cnjoke center-align">A Chuck Norris joke to start your trip: <span id="jokeP"></span></h2>
+  </header>
 
-    <!--<section class="img is-justify-content-center">
+  <!--<section class="img is-justify-content-center">
         <style>
             section {
                 background-image: url('./assets/image/Chuck.jpg');
@@ -31,57 +33,59 @@
             }
         </style>
     </section> -->
-    <div class="row">
-      <div class="col s12 l6">
-       <section id="form" class>
-          <div>
-            <h3>How do you want to travel today?</h3>
-          </div>
-          <div>
-            <form>
-              <div id="mode" class="row">
-                <h4>Transportation Mode:</h4>
-                <input type="radio" name="modes" value="car" />
-                <label>Car</label>
-                <input type="radio" name="modes" value="walk" />
-                <label>Walk</label>
-                <input type="radio" name="modes" value="bus" />
-                <label>Bus</label>
+  <div class="row">
+    <div class="col s12 l6">
+      <section id="form" class>
+        <div>
+          <h3>How do you want to travel today?</h3>
+        </div>
+        <div>
+          <form>
+            <div id="mode" class="row">
+              <h4>Transportation Mode:</h4>
+              <input type="radio" name="modes" value="car" />
+              <label>Car</label>
+              <input type="radio" name="modes" value="walk" />
+              <label>Walk</label>
+              <input type="radio" name="modes" value="bus" />
+              <label>Bus</label>
+            </div>
+            <div id="route" class="row">
+              <div id="from" class="col s6">
+                <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
               </div>
-              <div id="route" class="row">
-                <div id="from" class="col s6">
-                  <h4>From</h4>
-                  <textarea id="from-input">
-                  </textarea>
+              <div id="to" class="col s6">
+                <input type="text" name="end" class="input" id="destination" placeholder="Choose starting point" />
+                <button style="display: none;" type="submit">Get Directions</button>
                 </div>
-                <div id="to" class="col s6">
-                  <h4>To</h4>
-                  <textarea id="to-input"></textarea>
-                </div>
-                <div id="things" class="row">
-                  <h4>Things you want to see along your route:</h4>
-                  <input type="checkbox" name="things-input" />
-                  <label>Attractions</label>
-                  <input type="checkbox" name="things-input" />
-                  <label>Scenic Views</label>
-                  <input type="checkbox" name="things-input" />
-                  <label>Hotels</label>
-                  <input type="checkbox" name="things-input" />
-                  <label>Dining</label>
-                  <input type="checkbox" name="things-input" />
-                  <label>Entertainment</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </section>
-      </div>
-      <div class="col s12 l6 center-align">
-        <!-- iframe here-->
-        <img class="responsive-img" src="./assets/image/placeholderimg.png">
-      </div>
+              <div id="things" class="row">
+                <h4>Things you want to see along your route:</h4>
+                <input type="checkbox" name="things-input" />
+                <label>Attractions</label>
+                <input type="checkbox" name="things-input" />
+                <label>Scenic Views</label>
+                <input type="checkbox" name="things-input" />
+                <label>Hotels</label>
+                <input type="checkbox" name="things-input" />
+                <label>Dining</label>
+                <input type="checkbox" name="things-input" />
+                <label>Entertainment</label>
+                  </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <div class="col s12 l6 center-align">
+      <!-- iframe here-->
+      <img class="responsive-img" src="./assets/image/placeholderimg.png">
+    </div>
   </div>
-  <script src ='./assets/js/script.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=S8d7L47mdyAG5nHG09dUnSPJjreUVPeC"></script>
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=S8d7L47mdyAG5nHG09dUnSPJjreUVPeC"></script>
+  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+  <script src='./assets/js/script.js'></script>
 </body>
 
 </html>
