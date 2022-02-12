@@ -54,6 +54,7 @@ section h2 {
   font-style: italic;
 }
 
+
 #map {
   height:100vh;
   width: 100%;
@@ -92,6 +93,7 @@ section h2 {
 }
 input:nth-child(1) {
   margin-bottom: 10px;
+}
 section h3 {
   text-shadow: 0 0 10px var(--shadow);
 }

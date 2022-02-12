@@ -32,12 +32,14 @@
           <form  id="form" style='border:0; margin: 0'>
             <div id="mode" class="row">
               <h4>Transportation Mode:</h4>
-              <input type="radio" name="modes" value="car" />
-              <label>Car</label>
-              <input type="radio" name="modes" value="walk" />
-              <label>Walk</label>
-              <input type="radio" name="modes" value="bus" />
-              <label>Bus</label>
+              <span class="radiowrapper">
+              <input type="radio" name="modes" id="car" />
+              <label for="car">Car</label>
+              <input type="radio" name="modes" id="walk" />
+              <label for="walk">Walk</label>
+              <input type="radio" name="modes" id="bus" />
+              <label for="bus">Bus</label>
+              </span>
             </div>
             <div id="route" class="row">
               <div id="form" class="col s6">
@@ -49,16 +51,18 @@
               </div>
               <div id="things" class="row">
                 <h4>Things you want to see along your route:</h4>
-                <input type="checkbox" name="things-input" />
-                <label>Attractions</label>
-                <input type="checkbox" name="things-input" />
-                <label>Scenic Views</label>
-                <input type="checkbox" name="things-input" />
-                <label>Hotels</label>
-                <input type="checkbox" name="things-input" />
-                <label>Dining</label>
-                <input type="checkbox" name="things-input" />
-                <label>Entertainment</label>
+                <span class="checkbox-wrapper">
+                <input type="checkbox" name="things-input"  id="checkbox1" />
+                <label for="checkbox1">Attractions</label>
+                <input type="checkbox" name="things-input" id="checkbox2"/>
+                <label for="checkbox2">Scenic Views</label>
+                <input type="checkbox" name="things-input" id="checkbox3"/>
+                <label for="checkbox3">Hotels</label>
+                <input type="checkbox" name="things-input" id="checkbox4"/>
+                <label for="checkbox4">Dining</label>
+                <input type="checkbox" name="things-input" id="checkbox5"/>
+                <label for="checkbox5">Entertainment</label>
+                </span>
                   </div>
             </div>
           </form>
