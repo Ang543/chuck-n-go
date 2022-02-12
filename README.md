@@ -22,7 +22,7 @@ Here is a list of API's used in the making of Chuck N' Go:
 ## Website
 
 ## Screenshot
-![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChucknGo-screenshot.jpg)
+Screenshot: ![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChucknGo-screenshot.jpg)
 
 ## Wireframe
-![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChuckNgo–Figma.jpg)
+Screenshot: ![screenshot](https://github.com/Ang543/chuck-n-go/blob/main/assets/image/ChuckNgo–Figma.jpg)
