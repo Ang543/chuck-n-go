@@ -41,13 +41,9 @@ header h1 {
   flex-wrap: wrap;
 }
 
-header h4 {
-  text-shadow: 0 0 10px var(--shadow);
-}
+header h4 {}
 
-section h2 {
-  text-shadow: 0 0 10px var(--shadow);
-}
+section h2 {}
 
 #jokeP {
   font-size: 35px;
@@ -62,7 +58,7 @@ section h2 {
 
 .formBlock {
   max-width: 300px;
-  background-color: #FFF;
+  background-color: var(--tertiary-color);
   border: 1px solid #ddd;
   position: absolute;
   top: 10px;
@@ -84,23 +80,19 @@ section h2 {
   border: 1px solid #ddd;
   font-size: 15px;
   border-radius: 3px;
+  text-shadow: 0 0 0px var(--shadow);
 }
 
 #form {
   padding: 0;
   margin: 0;
 }
+
 input:nth-child(1) {
   margin-bottom: 10px;
-section h3 {
-  text-shadow: 0 0 10px var(--shadow);
-}
 
-section h4 {
-  text-shadow: 0 0 10px var(--shadow);
-}
+section h3 {}
 
-#text {
-  text-shadow: 0 0 10px var(--shadow);
-  color: var(--secondary-color);
-}
+section h4 {}
+
+#text {}
