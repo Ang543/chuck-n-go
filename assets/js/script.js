@@ -42,10 +42,10 @@ function jokeData() {
 //capture user input for tansport mode
 //hannah
 
-// $("#mode").on("click", function() {
-//   var mode = document.querySelector('input[name="modes"]:checked').value;
-//   console.log(mode);
-// });
+$("#mode").on("click", function() {
+  var modeChoice = document.querySelector('input[name="modes"]:checked').value;
+  console.log(mode);
+});
 //capture user input for to and from
 //angelo
 

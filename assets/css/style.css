@@ -95,10 +95,7 @@ section h2 {
 input:nth-child(1) {
   margin-bottom: 10px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 300d56aa5096b3584331212870705db9082f9175
 section h3 {
   text-shadow: 0 0 10px var(--shadow);
 }
