@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
   <title>Chuck n Go</title>
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -23,24 +22,14 @@
     <h2 class="cnjoke center-align">A Chuck Norris joke to start your trip: <span id="jokeP"></span></h2>
   </header>
 
-  <!--<section class="img is-justify-content-center">
-        <style>
-            section {
-                background-image: url('./assets/image/Chuck.jpg');
-                background-repeat: no-repeat;
-                margin-top: 90px;
-                padding: 450px;
-            }
-        </style>
-    </section> -->
-  <div class="row">
+   <div class="row">
     <div class="col s12 l6">
       <section id="form" class>
         <div>
           <h3>How do you want to travel today?</h3>
         </div>
-        <div>
-          <form>
+        <div class="formblock">
+          <form  id="form" style='border:0; margin: 0'>
             <div id="mode" class="row">
               <h4>Transportation Mode:</h4>
               <input type="radio" name="modes" value="car" />
@@ -51,13 +40,13 @@
               <label>Bus</label>
             </div>
             <div id="route" class="row">
-              <div id="from" class="col s6">
+              <div id="form" class="col s6">
                 <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
               </div>
-              <div id="to" class="col s6">
+              <div class="col s6">
                 <input type="text" name="end" class="input" id="destination" placeholder="Choose starting point" />
-                <button style="display: none;" type="submit">Get Directions</button>
-                </div>
+                <button type="button">Get Directions</button>
+              </div>
               <div id="things" class="row">
                 <h4>Things you want to see along your route:</h4>
                 <input type="checkbox" name="things-input" />
@@ -76,11 +65,10 @@
         </div>
       </section>
     </div>
-    <div class="col s12 l6 center-align">
-      <!-- iframe here-->
-      <img class="responsive-img" src="./assets/image/placeholderimg.png">
-    </div>
-  </div>
+    <section class="col s12 l6 center-align" style='border:0; margin: 0'>
+      <div id='map'> </div>
+      
+    </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
   <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=S8d7L47mdyAG5nHG09dUnSPJjreUVPeC"></script>
   <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=S8d7L47mdyAG5nHG09dUnSPJjreUVPeC"></script>

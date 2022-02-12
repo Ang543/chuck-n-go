@@ -142,9 +142,7 @@ function submitForm(event) {
 const form = document.getElementById('form');
 
 // call the submitForm() function when submitting the form
-form.addEventListener('submit', submitForm);
-
-getDirection()
+form.addEventListener('button', submitForm);
 
 //call opentrip to get attractions along route
 //salieu
