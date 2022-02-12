@@ -5,6 +5,7 @@
   font-style: italic;
   font-weight: bold;
   font-family: 'Bebas Neue', cursive;
+  text-shadow: 0 0 10px var(--shadow);
 }
 
 :root {
@@ -42,22 +43,36 @@ header h1 {
 }
 
 header h4 {
-  text-shadow: 0 0 10px var(--shadow);
+
 }
 
 section h2 {
-  text-shadow: 0 0 10px var(--shadow);
+
 }
 
 section h3 {
-  text-shadow: 0 0 10px var(--shadow);
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 10px 140px;
 }
 
 section h4 {
-  text-shadow: 0 0 10px var(--shadow);
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 10px 160px;
+}
+
+div#mode.row {
+ 
 }
 
 #text {
-  text-shadow: 0 0 10px var(--shadow);
+
   color: var(--secondary-color);
-}
+}git add
