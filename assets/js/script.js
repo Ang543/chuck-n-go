@@ -2,7 +2,7 @@ const jokeEl = document.getElementById('.jokeP')
 const fromEl = document.getElementById('from')
 const toEl = document.getElementById('to')
 let apiMq = "XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY";
-let apiOpenTrip = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
+let apiOpenKey = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
 var attractEl = document.querySelector("#attract");
 var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
@@ -56,112 +56,36 @@ function jokeData() {
 
 //call Mq to get route using user inputs
 //dennis
+mapboxgl.accessToken = 'pk.eyJ1IjoiZG1vbG9uZXk1IiwiYSI6ImNremthcmZyaTIxbzgybm9ibTcxZjFmamIifQ.q4EzfE9upNAQ9-mjDSDvVA';
+navigator.geolocation.getCurrentPosition( successLocation, errorLocation, {
+  enableHighAccuracy: true
+})
 
-// default map layer
-let map = L.map('map', {
-  layers: MQ.mapLayer(),
-  center: [35.791188, -78.636755],
-  zoom: 12
-});
-  
-
-  function runDirection(start, end) {
-      
-      // recreating new map layer after removal
-      map = L.map('map', {
-          layers: MQ.mapLayer(),
-          center: [35.791188, -78.636755],
-          zoom: 12
-      });
-      
-      var dir = MQ.routing.directions();
-
-      dir.route({
-          locations: [
-              start,
-              end
-          ]
-      });
-  
-
-      CustomRouteLayer = MQ.Routing.RouteLayer.extend({
-          createStartMarker: (location) => {
-              var custom_icon;
-              var marker;
-
-              custom_icon = L.icon({
-                  iconUrl: 'img/red.png',
-                  iconSize: [20, 29],
-                  iconAnchor: [10, 29],
-                  popupAnchor: [0, -29]
-              });
-
-              marker = L.marker(location.latLng, {icon: custom_icon}).addTo(map);
-
-              return marker;
-          },
-
-          createEndMarker: (location) => {
-              var custom_icon;
-              var marker;
-
-              custom_icon = L.icon({
-                  iconUrl: 'img/blue.png',
-                  iconSize: [20, 29],
-                  iconAnchor: [10, 29],
-                  popupAnchor: [0, -29]
-              });
-
-              marker = L.marker(location.latLng, {icon: custom_icon}).addTo(map);
-
-              return marker;
-          }
-      });
-      
-      map.addLayer(new CustomRouteLayer({
-          directions: dir,
-          fitBounds: true
-      })); 
-  }
-
-
-// function that runs when form submitted
-function submitForm(event) {
-  event.preventDefault();
-
-  // delete current map layer
-  map.remove();
-
-  // getting form data
-  start = document.getElementById("start").value;
-  end = document.getElementById("destination").value;
-
-  // run directions function
-  runDirection(start, end);
-
-  // reset form
-  document.getElementById("form").reset();
+function successLocation(position){
+  setUpMap([position.coords.longitude, position.coords.latitude])
 }
 
-// asign the form to form variable
-const form = document.getElementById('form');
+function errorLocation(){
+  setUpMap([-74.4057, 40.0583])
+}
 
-// call the submitForm() function when submitting the form
-form.addEventListener('button', submitForm);
-
-//call opentrip to get attractions along route
-var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
-  fetch(response).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-    });
+function setUpMap(center){
+  var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: center,
+  zoom: 8
   });
-};
 
+  map.addControl(new mapboxgl.NavigationControl());
 
-
-getMapObject();
+  map.addControl(
+      new MapboxDirections({
+      accessToken: mapboxgl.accessToken
+      }),
+      'top-left'
+      );
+}
 
 //allow user to save a trip
 //angelo
