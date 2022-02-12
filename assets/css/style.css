@@ -41,19 +41,10 @@ header h1 {
   flex-wrap: wrap;
 }
 
-header h4 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-section h2 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
 #jokeP {
   font-size: 35px;
   font-style: italic;
 }
-
 
 #map {
   height:100vh;
@@ -63,7 +54,7 @@ section h2 {
 
 .formBlock {
   max-width: 300px;
-  background-color: #FFF;
+  background-color: var(--tertiary-color);
   border: 1px solid #ddd;
   position: absolute;
   top: 10px;
@@ -85,6 +76,7 @@ section h2 {
   border: 1px solid #ddd;
   font-size: 15px;
   border-radius: 3px;
+  text-shadow: 0 0 0px var(--shadow);
 }
 
 #form {
@@ -94,17 +86,3 @@ section h2 {
 
 input:nth-child(1) {
   margin-bottom: 10px;
-}
-
-section h3 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-section h4 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-#text {
-  text-shadow: 0 0 10px var(--shadow);
-  color: var(--secondary-color);
-}
