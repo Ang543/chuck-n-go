@@ -32,12 +32,18 @@
           <form  id="form" style='border:0; margin: 0'>
             <div id="mode" class="row">
               <h4>Transportation Mode:</h4>
-              <input type="radio" name="modes" value="car" />
-              <label>Car</label>
-              <input type="radio" name="modes" value="walk" />
-              <label>Walk</label>
-              <input type="radio" name="modes" value="bus" />
-              <label>Bus</label>
+              <div class="col s3">
+                <input type="radio" id="modeChoice1" name="modes" value="car" checked/>
+                <label>Car</label>
+              </div>
+              <div class="col s3">
+                <input type="radio" id="modeChoice2" name="modes" value="walk" />
+                <label>Walk</label>
+              </div>
+              <div class="col s3">
+                <input type="radio" id="modeChoice3" name="modes" value="bus" />
+                <label>Bus</label>
+              </div>
             </div>
             <div id="route" class="row">
               <div id="form" class="col s6">
@@ -49,15 +55,15 @@
               </div>
               <div id="things" class="row">
                 <h4>Things you want to see along your route:</h4>
-                <input type="checkbox" name="things-input" />
+                <input type="checkbox" id="thingsChoice1" name="things-input" />
                 <label>Attractions</label>
-                <input type="checkbox" name="things-input" />
+                <input type="checkbox" id="thingsChoice2" name="things-input" />
                 <label>Scenic Views</label>
-                <input type="checkbox" name="things-input" />
+                <input type="checkbox" id="thingsChoice3" name="things-input" />
                 <label>Hotels</label>
-                <input type="checkbox" name="things-input" />
+                <input type="checkbox" id="thingsChoice4"name="things-input" />
                 <label>Dining</label>
-                <input type="checkbox" name="things-input" />
+                <input type="checkbox" id="thingsChoice5" name="things-input" />
                 <label>Entertainment</label>
                   </div>
             </div>
