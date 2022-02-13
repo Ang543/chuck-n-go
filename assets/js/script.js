@@ -7,6 +7,8 @@ var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
 var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
+var modeChoice = document.querySelector('input[name="modes"]:checked').value;
+var thingsToSee = [];
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -54,18 +56,24 @@ getMapObject();
 
 //capture user input for tansport mode
 //hannah
+$("#mode").on("click", function() {
+  modeChoice = document.querySelector('input[name="modes"]:checked').value;
+  console.log(modeChoice);
+});
 
-// $("#mode").on("click", function() {
-//   var mode = document.querySelector('input[name="modes"]:checked').value;
-//   console.log(mode);
-// });
 //capture user input for to and from
 //angelo
 
 //capture user input for things they want to see
 //hannah
-
-
+$("#getDirections").on("click", function() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //adds checkbox value to global var array thingsToSee
+  for (var checkbox of checkboxes){
+      thingsToSee.push(checkbox.value);
+  }
+  console.log(thingsToSee);
+});
 
 //call Mq to get route using user inputs
 //dennis

@@ -14,6 +14,10 @@
   --shadow: rgba(0, 0, 0, 0.5);
 }
 
+.body {
+  background-color: var( --tertiary-color);
+}
+
 header {
   background-color: var(--primary-color);
 }
@@ -41,6 +45,10 @@ header h1 {
   flex-wrap: wrap;
 }
 
+header h2 {
+  text-shadow: 0 0 10px var(--shadow);
+}
+
 header h4 {
   text-shadow: 0 0 10px var(--shadow);
 }
@@ -52,6 +60,7 @@ section h2 {
 #jokeP {
   font-size: 35px;
   font-style: italic;
+  text-shadow: 0 0 10px var(--shadow);
 }
 
 
@@ -90,6 +99,11 @@ section h2 {
 #form1 {
   padding: 0;
   margin: 0;
+}
+
+.ratiocheckbox {
+  color: var(--secondary-color);
+  text-shadow: 0 0 10px var(--shadow);
 }
 
 input:nth-child(1) {
