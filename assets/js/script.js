@@ -54,11 +54,9 @@ $("#mode").on("click", function() {
 //capture user input for things they want to see
 //hannah
 $("#getDirections").on("click", function() {
-  var checkboxes = document.getElementByName("things-input");
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
   for (var checkbox of checkboxes){
-    if (checkbox.checked) {
       thingsToSee.push(checkbox.value);
-    }
   }
   console.log(thingsToSee);
 });
