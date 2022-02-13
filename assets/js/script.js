@@ -1,7 +1,6 @@
 const jokeEl = document.getElementById('.jokeP')
 const fromEl = document.getElementById('from')
 const toEl = document.getElementById('to')
-let apiMq = "XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY";
 let apiOpenTrip = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
 var attractEl = document.querySelector("#attract");
 var scenicEL = document.querySelector("#scenic")
@@ -74,8 +73,8 @@ getMapObject();
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
-  center: [35.791188, -78.636755],
-  zoom: 12
+  center: [40.0583, -74.4057],
+  zoom: 8
 });
   
 
@@ -84,7 +83,7 @@ let map = L.map('map', {
       // recreating new map layer after removal
       map = L.map('map', {
           layers: MQ.mapLayer(),
-          center: [35.791188, -78.636755],
+          center: [40.0583, -74.4057],
           zoom: 12
       });
       
@@ -104,7 +103,7 @@ let map = L.map('map', {
               var marker;
 
               custom_icon = L.icon({
-                  iconUrl: 'img/red.png',
+                  iconUrl: './assets/image/red.png',
                   iconSize: [20, 29],
                   iconAnchor: [10, 29],
                   popupAnchor: [0, -29]
@@ -120,7 +119,7 @@ let map = L.map('map', {
               var marker;
 
               custom_icon = L.icon({
-                  iconUrl: 'img/blue.png',
+                  iconUrl: './assets/image/blue.png',
                   iconSize: [20, 29],
                   iconAnchor: [10, 29],
                   popupAnchor: [0, -29]
