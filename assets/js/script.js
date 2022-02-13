@@ -8,6 +8,8 @@ var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
 var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
+var modeChoice = document.querySelector('input[name="modes"]:checked').value;
+var thingsToSee = [];
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -41,9 +43,8 @@ function jokeData() {
 
 //capture user input for tansport mode
 //hannah
-
 $("#mode").on("click", function() {
-  var modeChoice = document.querySelector('input[name="modes"]:checked').value;
+  modeChoice = document.querySelector('input[name="modes"]:checked').value;
   console.log(modeChoice);
 });
 
@@ -52,8 +53,15 @@ $("#mode").on("click", function() {
 
 //capture user input for things they want to see
 //hannah
-
-
+$("#getDirections").on("click", function() {
+  var checkboxes = document.getElementByName("things-input");
+  for (var checkbox of checkboxes){
+    if (checkbox.checked) {
+      thingsToSee.push(checkbox.value);
+    }
+  }
+  console.log(thingsToSee);
+});
 
 //call Mq to get route using user inputs
 //dennis
