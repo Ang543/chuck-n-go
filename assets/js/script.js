@@ -1,13 +1,14 @@
 const jokeEl = document.getElementById('.jokeP')
 const fromEl = document.getElementById('from')
 const toEl = document.getElementById('to')
-let apiMq = "XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY";
 let apiOpenTrip = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
 var attractEl = document.querySelector("#attract");
 var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
 var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
+var modeChoice = document.querySelector('input[name="modes"]:checked').value;
+var thingsToSee = [];
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -55,18 +56,24 @@ getMapObject();
 
 //capture user input for tansport mode
 //hannah
+$("#mode").on("click", function() {
+  modeChoice = document.querySelector('input[name="modes"]:checked').value;
+  console.log(modeChoice);
+});
 
-// $("#mode").on("click", function() {
-//   var mode = document.querySelector('input[name="modes"]:checked').value;
-//   console.log(mode);
-// });
 //capture user input for to and from
 //angelo
 
 //capture user input for things they want to see
 //hannah
-
-
+$("#getDirections").on("click", function() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //adds checkbox value to global var array thingsToSee
+  for (var checkbox of checkboxes){
+      thingsToSee.push(checkbox.value);
+  }
+  console.log(thingsToSee);
+});
 
 //call Mq to get route using user inputs
 //dennis
@@ -74,8 +81,8 @@ getMapObject();
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
-  center: [35.791188, -78.636755],
-  zoom: 12
+  center: [40.0583, -74.4057],
+  zoom: 8
 });
   
 
@@ -84,7 +91,7 @@ let map = L.map('map', {
       // recreating new map layer after removal
       map = L.map('map', {
           layers: MQ.mapLayer(),
-          center: [35.791188, -78.636755],
+          center: [40.0583, -74.4057],
           zoom: 12
       });
       
@@ -104,7 +111,7 @@ let map = L.map('map', {
               var marker;
 
               custom_icon = L.icon({
-                  iconUrl: 'img/red.png',
+                  iconUrl: './assets/image/red.png',
                   iconSize: [20, 29],
                   iconAnchor: [10, 29],
                   popupAnchor: [0, -29]
@@ -120,7 +127,7 @@ let map = L.map('map', {
               var marker;
 
               custom_icon = L.icon({
-                  iconUrl: 'img/blue.png',
+                  iconUrl: './assets/image/blue.png',
                   iconSize: [20, 29],
                   iconAnchor: [10, 29],
                   popupAnchor: [0, -29]
