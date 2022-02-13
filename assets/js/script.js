@@ -55,6 +55,7 @@ $("#mode").on("click", function() {
 //hannah
 $("#getDirections").on("click", function() {
   var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //adds checkbox value to global var array thingsToSee
   for (var checkbox of checkboxes){
       thingsToSee.push(checkbox.value);
   }
