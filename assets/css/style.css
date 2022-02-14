@@ -5,6 +5,7 @@
   font-style: italic;
   font-weight: bold;
   font-family: 'Bebas Neue', cursive;
+  text-shadow: 0 0 10px var(--shadow);
 }
 
 :root {
@@ -58,7 +59,7 @@ section h2 {
 }
 
 #jokeP {
-  font-size: 35px;
+  font-size: 30px;
   font-style: italic;
   text-shadow: 0 0 10px var(--shadow);
 }
