@@ -59,7 +59,7 @@ $("#getDirections").on("click", function() {
   for (var checkbox of checkboxes){
       thingsToSee.push(checkbox.value);
   }
-  console.log(thingsToSee);
+  // console.log(thingsToSee);
 });
 
 //call Mq to get route using user inputs
@@ -68,8 +68,8 @@ $("#getDirections").on("click", function() {
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
-  center: [35.791188, -78.636755],
-  zoom: 12
+  center: [40.0583, -74.4057],
+  zoom: 8
 });
   
 
@@ -78,8 +78,8 @@ let map = L.map('map', {
       // recreating new map layer after removal
       map = L.map('map', {
           layers: MQ.mapLayer(),
-          center: [35.791188, -78.636755],
-          zoom: 12
+          center: [40.0583, -74.4057],
+          zoom: 8
       });
       
       var dir = MQ.routing.directions();
@@ -155,21 +155,21 @@ function submitForm(event) {
 const form = document.getElementById('form');
 
 // call the submitForm() function when submitting the form
-form.addEventListener('button', submitForm);
+form.addEventListener('submit', submitForm);
 
 //call opentrip to get attractions along route
-var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
-  fetch(response).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-    });
-  });
-};
+// var getMapObject = function () {
+//   var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
+//   fetch(response).then(function (response) {
+//     response.json().then(function (data) {
+//       console.log(data);
+//     });
+//   });
+// };
 
 
 
-getMapObject();
+// getMapObject();
 
 //allow user to save a trip
 //angelo
