@@ -51,6 +51,32 @@ $("#mode").on("click", function() {
 //capture user input for to and from
 //angelo
 
+//start of trip
+
+document.getElementById("getDirections").onclick = function(){
+
+  var tripStart = document.getElementById("start").value;
+  console.log(tripStart);
+}
+
+//$("#start").on("click", function() {
+  //tripStart = document.querySelector('input[name="text"]:checked').value;
+  //console.log(tripStart);
+//});
+
+//end of trip
+
+document.getElementById("getDirections").onclick = function(){
+
+  var tripEnd = document.getElementById("destination").value;
+  console.log(tripEnd);
+}
+
+//$("#destination").on("click", function() {
+  //tripEnd = document.querySelector('input[name="text"]:checked').value;
+  //console.log(tripEnd);
+//});
+
 //capture user input for things they want to see
 //hannah
 $("#getDirections").on("click", function() {
