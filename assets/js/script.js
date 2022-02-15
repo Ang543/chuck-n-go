@@ -9,6 +9,11 @@ var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 var thingsToSee = [];
+var whereTo = "";
+
+var placesEl = document.querySelector("#places-container");
+var SearchTerm = document.querySelector("#search-term");
+
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -40,18 +45,61 @@ function jokeData() {
 }
   jokeData()
 
+  
+
   //call opentrip to get attractions along route
 var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenTrip);
+  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=32.364285&lat_min=56.855685&lon_max=38.372809&lat_max=59.859052&kinds=accomodations&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
   fetch(response).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
+
+      startLat = data.features[0].geometry.coordinates[0];
+      startLong = data.features[0].geometry.coordinates[1];
+      whereTo = data.features[0].properties.name;
+      // console.log(data.features);
+      placesToSee(data);
+
     });
   });
-};
 
+     
 
+     var placesToSee = function (data){
+      placesEl.textContent = ";"
+    
 
+      for (var i = 0; i < data.features.length; i++) {
+        // format repo name
+        var whereToList = data.features[i].properties.name
+        console.log(whereToList);
+      
+        // create a container for each repo
+        var thePlace = document.createElement("div");
+        thePlace.classList = "list-item flex-row justify-space-between align-center";
+      
+        // create a span element to hold repository name
+        var titleEl = document.createElement("span");
+        titleEl.textContent = whereToList;
+      
+        // append to container
+        thePlace.appendChild(titleEl);
+      
+        // append container to the dom
+        placesEl.appendChild(thePlace);
+      }
+
+    
+
+      // console.log(startLat,startLong,whereTo);
+
+      //
+    }
+      
+ 
+
+}
+  
 getMapObject();
 
 //capture user input for tansport mode
@@ -73,7 +121,25 @@ $("#getDirections").on("click", function() {
       thingsToSee.push(checkbox.value);
   }
   console.log(thingsToSee);
-});
+
+
+//loop to grab attractions from opentrip api
+// if(thingsToSee == "attractions"){
+  
+ 
+
+// }else if(thingsToSee == "scenic views"){
+//   console.log("sceanic picked");
+//   break;
+// }
+// else if(thingsToSee == "hotels"){
+//   console.log("hotels was pic picked");
+// } else {
+//   alert("no attractions have been selected")
+// }
+  
+
+ });
 
 //call Mq to get route using user inputs
 //dennis
