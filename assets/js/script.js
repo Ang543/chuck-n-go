@@ -49,7 +49,7 @@ function jokeData() {
 
   //call opentrip to get attractions along route
 var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=32.364285&lat_min=56.855685&lon_max=38.372809&lat_max=59.859052&kinds=accomodations&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=32.364285&lat_min=56.855685&lon_max=38.372809&lat_max=59.859052&kinds=interesting_places&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
   fetch(response).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
