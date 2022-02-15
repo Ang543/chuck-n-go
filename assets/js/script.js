@@ -10,7 +10,7 @@ var entEl = document.querySelector("#ent")
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 var thingsToSee = [];
 var whereTo = "";
-
+var activity = "";
 var placesEl = document.querySelector("#places-container");
 var SearchTerm = document.querySelector("#search-term");
 
@@ -44,13 +44,20 @@ function jokeData() {
 
 }
   jokeData()
+  
 
+ 
+  
   
 
   //call opentrip to get attractions along route
 var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=32.364285&lat_min=56.855685&lon_max=38.372809&lat_max=59.859052&kinds=interesting_places&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
-  fetch(response).then(function (response) {
+  
+
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=amusements&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+
+
+  fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
 
@@ -58,12 +65,13 @@ var getMapObject = function () {
       startLong = data.features[0].geometry.coordinates[1];
       whereTo = data.features[0].properties.name;
       // console.log(data.features);
-      placesToSee(data);
+      console.log(startLat,startLong,wherTo);
 
     });
   });
 
-     
+ 
+
 
      var placesToSee = function (data){
       placesEl.textContent = ";"
@@ -76,7 +84,7 @@ var getMapObject = function () {
       
         // create a container for each repo
         var thePlace = document.createElement("div");
-        thePlace.classList = "list-item flex-row justify-space-between align-center";
+        thePlace.classList = "list";
       
         // create a span element to hold repository name
         var titleEl = document.createElement("span");
@@ -89,6 +97,7 @@ var getMapObject = function () {
         placesEl.appendChild(thePlace);
       }
 
+      
     
 
       // console.log(startLat,startLong,whereTo);
@@ -99,8 +108,21 @@ var getMapObject = function () {
  
 
 }
+
+$("#getDirections").on("click", function() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //adds checkbox value to global var array thingsToSee
+  for (var checkbox of checkboxes){
+      thingsToSee.push(checkbox.value);
+      console.log(thingsToSee);
+
+  }
+  getMapObject();
   
-getMapObject();
+
+});
+  
+
 
 //capture user input for tansport mode
 //hannah
@@ -140,14 +162,7 @@ document.getElementById("getDirections").onclick = function(){
 
 //capture user input for things they want to see
 //hannah
-$("#getDirections").on("click", function() {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  //adds checkbox value to global var array thingsToSee
-  for (var checkbox of checkboxes){
-      thingsToSee.push(checkbox.value);
-  }
-  // console.log(thingsToSee);
-});
+
 
 //call Mq to get route using user inputs
 //dennis

@@ -30,7 +30,7 @@
           <h3>How do you want to travel today?</h3>
         </div>
         <span class="radiowrapper">
-          <h4>Transportation Mode:</h4>
+          <!-- <h4>Transportation Mode:</h4> -->
           <div class="col s3">
             <input type="radio" name="modes" id="car" value="car" checked />
             <label for="car" class="ratiocheckbox">Car</label>
@@ -83,11 +83,13 @@
         </form>
       </div>
     </section>
+
     </section>
-  </div>
-
-
-  </div>
+    
+  <div class="col-12 col-md-8">
+      <h2 class="subtitle"> places to see on this trip <span id="search-term"></span></h2>
+      <div id="places-container" class="list"></div>
+    </div>
 
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
