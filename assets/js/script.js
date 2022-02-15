@@ -118,11 +118,7 @@ let map = L.map('map', {
       map = L.map('map', {
           layers: MQ.mapLayer(),
           center: [40.0583, -74.4057],
-<<<<<<< HEAD
-          zoom: 12
-=======
           zoom: 8
->>>>>>> ee9354bb11931ca21bff433bebb3233063d19ced
       });
       
       var dir = MQ.routing.directions();
@@ -200,10 +196,6 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
-<<<<<<< HEAD
-
-
-=======
 //call opentrip to get attractions along route
 // var getMapObject = function () {
 //   var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
@@ -218,7 +210,6 @@ form.addEventListener('submit', submitForm);
 
 // getMapObject();
 
->>>>>>> ee9354bb11931ca21bff433bebb3233063d19ced
 //allow user to save a trip
 //angelo
 
