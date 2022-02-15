@@ -112,6 +112,32 @@ $("#mode").on("click", function() {
 //capture user input for to and from
 //angelo
 
+//start of trip
+
+
+ 
+
+//$("#start").on("click", function() {
+  //tripStart = document.querySelector('input[name="text"]:checked').value;
+  //console.log(tripStart);
+//});
+
+//end of trip
+
+document.getElementById("getDirections").onclick = function(){
+
+  var tripStart = document.getElementById("start").value;
+  console.log(tripStart);
+
+  var tripEnd = document.getElementById("destination").value;
+  console.log(tripEnd);
+}
+
+//$("#destination").on("click", function() {
+  //tripEnd = document.querySelector('input[name="text"]:checked').value;
+  //console.log(tripEnd);
+//});
+
 //capture user input for things they want to see
 //hannah
 $("#getDirections").on("click", function() {
@@ -120,26 +146,8 @@ $("#getDirections").on("click", function() {
   for (var checkbox of checkboxes){
       thingsToSee.push(checkbox.value);
   }
-  console.log(thingsToSee);
-
-
-//loop to grab attractions from opentrip api
-// if(thingsToSee == "attractions"){
-  
- 
-
-// }else if(thingsToSee == "scenic views"){
-//   console.log("sceanic picked");
-//   break;
-// }
-// else if(thingsToSee == "hotels"){
-//   console.log("hotels was pic picked");
-// } else {
-//   alert("no attractions have been selected")
-// }
-  
-
- });
+  // console.log(thingsToSee);
+});
 
 //call Mq to get route using user inputs
 //dennis
@@ -158,7 +166,7 @@ let map = L.map('map', {
       map = L.map('map', {
           layers: MQ.mapLayer(),
           center: [40.0583, -74.4057],
-          zoom: 12
+          zoom: 8
       });
       
       var dir = MQ.routing.directions();
@@ -234,9 +242,23 @@ function submitForm(event) {
 const form = document.getElementById('form');
 
 // call the submitForm() function when submitting the form
-form.addEventListener('button', submitForm);
+form.addEventListener('submit', submitForm);
 
+//loop to grab attractions from opentrip api
+// if(thingsToSee == "attractions"){
+  
+ 
 
+// }else if(thingsToSee == "scenic views"){
+//   console.log("sceanic picked");
+//   break;
+// }
+// else if(thingsToSee == "hotels"){
+//   console.log("hotels was pic picked");
+// } else {
+//   alert("no attractions have been selected")
+// }
+  
 
 //allow user to save a trip
 //angelo
