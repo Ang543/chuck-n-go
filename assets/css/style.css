@@ -5,7 +5,7 @@
   font-style: italic;
   font-weight: bold;
   font-family: 'Bebas Neue', cursive;
-  text-shadow: 0 0 10px var(--shadow);
+ 
 }
 
 :root {
@@ -66,18 +66,21 @@ section h2 {
 
 
 #map {
-  height:100vh;
-  width: 100%;
-  position: relative;
+  height:400px;
+  width: 50%;
+  position: absolute;
+  right:50px;
+  bottom:1opx;
 }
 
 .formBlock {
-  max-width: 300px;
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 600px;
   background-color: #FFF;
   border: 1px solid #ddd;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 615px;
+  left: 80px;
   padding: 10px;
   z-index: 999;
   box-shadow: 0 1px 5px rgba(0,0,0,0.65);
@@ -86,7 +89,7 @@ section h2 {
 }
 
 .leaflet-top .leaflet-control {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .input {
@@ -103,7 +106,7 @@ section h2 {
 }
 
 .ratiocheckbox {
-  color: var(--secondary-color);
+  color: darkblue;
   text-shadow: 0 0 10px var(--shadow);
 }
 

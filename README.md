@@ -10,7 +10,7 @@ This was our Front End Project.  We want to combine the comedy from Chuck Norris
 
 ## License
 Here is a list of API's used in the making of Chuck N' Go:
-   <li>https://www.mapbox.com/ ( used the map API for direction)</li>
+   <li>https://developer.mapquest.com ( used the map API for direction)</li>
    <li>https://www.figma.com/ (used for our starting wireframe)</li>
    <li>https://opentripmap.io/product (used this API for the amendities overlaying)</li>
    <li>https://materializecss.com/ (used for most of our CSS)</li>
