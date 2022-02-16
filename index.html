@@ -9,9 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
   <title>Chuck n Go</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -19,10 +17,10 @@
 <body class="body">
 
   <header class="row">
-    <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
-    <h1 class="col s10 center-align">Chuck N' Go</h1>
+    <img class="chuck circle responsive-img col s12 m4 l2" src="./assets/image/Chuck.jpg">
+    <h1 class="col s12 m6 l10 center-align">Chuck N' Go</h1>
     <div>
-      <h3 class="cnjoke center-align">A Chuck Norris joke to start your trip: <span id="jokeP"></span></h3>
+      <h3 class="cnjoke col s12 center-align">A Chuck Norris joke to start your trip: <span id="jokeP"></span></h3>
     </div>
   </header>
 
@@ -33,7 +31,6 @@
           <h3>How do you want to travel today?</h3>
         </div>
         <span class="radiowrapper">
-          <!-- <h4>Transportation Mode:</h4> -->
           <div class="col s4">
             <input type="radio" name="modes" id="car" value="car" checked />
             <label for="car" class="ratiocheckbox">Car</label>
@@ -52,7 +49,7 @@
     <div id="route" class="row">
       <div id="things" class="row">
         <h4>Things you want to see along your route:</h4>
-        <section class="checkbox-wrapper">
+        <section class="checkbox-wrapper col s12 m6 l6">
           <div class="col s12 m6 l2">
             <input type="checkbox" name="things-input" id="checkbox1" value="attractions" />
             <label for="checkbox1" class="ratiocheckbox">Attractions</label>
@@ -75,34 +72,30 @@
           </div>
       </div>
     </div>
-    <section class="row" style='border:0; margin: 0'>
-      <div class="formBlock col s12">
+    <section class="row">
+      <div class="formBlock col s12 m5 l5 center-align">
         <form id="form">
           <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
           <input type="text" name="end" class="input" id="destination" placeholder="Choose starting point" />
           <button type="submit" id="getDirections">Get Directions</button>
           <button type="save">Save Directions</button>
-
-          <div class=formBlock id="saved-trips-container">
-
-
-            <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
-            <p class="p-3 mb-2 bg-secondary text-white">Search History:</p>
-            <form id="history"></form>
-          </div>
         </form>
       </div>
+      <div class="col s0 m1 l1"></div>
+      <div class="col s12 m6 l6" id='map'></div>
     </section>
-
-    <div class="row">
-      <div class="col s12" id='map'></div>
-    </div>
 
     <div class="row">
       <div>
         <h2 class="subtitle col s6">places to see on this trip<span id="search-term"></span></h2>
       </div>
       <div id="places-container" class="col s6 list"></div>
+    </div>
+
+    <div class="formBlock" id="saved-trips-container">
+      <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+      <p class="p-3 mb-2 bg-secondary text-white">Search History:</p>
+      <form id="history"></form>
     </div>
 
     <footer class="row" style="height:15px; position: relative;">
