@@ -117,7 +117,7 @@ $("#getDirections").on("click", function() {
       thingsToSee.push(checkbox.value);
       
   }
-  if(thingsToSee == "attractions"){
+  if(thingsToSee == "Attractions"){
     activity = "amusements"
     
   }
@@ -148,11 +148,11 @@ $("#getDirections").on("click", function() {
 
 //capture user input for tansport mode
 //hannah
-$("#mode").on("click", function() {
-  modeChoice = document.querySelector('input[name="modes"]:checked').value;
-  console.log(modeChoice);
-});
 
+// $("#mode").on("click", function() {
+//   var mode = document.querySelector('input[name="modes"]:checked').value;
+//   console.log(mode);
+// });
 //capture user input for to and from
 //angelo
 
@@ -203,7 +203,7 @@ let map = L.map('map', {
       map = L.map('map', {
           layers: MQ.mapLayer(),
           center: [40.0583, -74.4057],
-          zoom: 8
+          zoom: 12
       });
       
       var dir = MQ.routing.directions();
@@ -283,4 +283,3 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
-/
