@@ -7,12 +7,27 @@ var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
 var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
+var savedTripsDiv = document.querySelector("#saved-trips-container");
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 var thingsToSee = [];
 var whereTo = "";
 var activity = "";
 var placesEl = document.querySelector("#places-container");
 var SearchTerm = document.querySelector("#search-term");
+
+
+var savedTrips = JSON.parse(localStorage.getItem("trips")) || []; // short circuit
+
+for (let i = 0; i < savedTrips.length; i++) {
+  var newButton = document.createElement("button");
+  newButton.textContent = "From " + savedTrips[i].origin + " to " + savedTrips[i].destination
+  
+  savedTripsDiv.append(newButton)
+}
+
+
+
+
 
 
 //get chuckjoke from api and display for user for every new trip
@@ -169,14 +184,14 @@ $("#getDirections").on("click", function() {
 
 //end of trip
 
-document.getElementById("getDirections").onclick = function(){
+// document.getElementById("getDirections").onclick = function(){
 
-  var tripStart = document.getElementById("start").value;
-  console.log(tripStart);
+//   var tripStart = document.getElementById("start").value;
+//   console.log(tripStart);
 
-  var tripEnd = document.getElementById("destination").value;
-  console.log(tripEnd);
-}
+//   var tripEnd = document.getElementById("destination").value;
+//   console.log(tripEnd);
+// }
 
 //$("#destination").on("click", function() {
   //tripEnd = document.querySelector('input[name="text"]:checked').value;
@@ -270,6 +285,21 @@ function submitForm(event) {
   // getting form data
   start = document.getElementById("start").value;
   end = document.getElementById("destination").value;
+
+  console.log(start)
+  console.log(end)
+
+  // bundle the data
+  var trip = {
+    origin: start,
+    destination: end
+  }
+
+  savedTrips.push(trip);
+
+  localStorage.setItem("trips", JSON.stringify(savedTrips))
+
+  // console.log(trip);
 
   // run directions function
   runDirection(start, end);
