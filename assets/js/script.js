@@ -8,8 +8,23 @@ var scenicEL = document.querySelector("#scenic")
 var hotelEl = document.querySelector("#hotel")
 var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
+var savedTripsDiv = document.querySelector("#saved-trips-container");
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 var thingsToSee = [];
+
+var savedTrips = JSON.parse(localStorage.getItem("trips")) || []; // short circuit
+
+for (let i = 0; i < savedTrips.length; i++) {
+  var newButton = document.createElement("button");
+  newButton.textContent = "From " + savedTrips[i].origin + " to " + savedTrips[i].destination
+  
+  savedTripsDiv.append(newButton)
+}
+
+
+
+
+
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -63,14 +78,14 @@ $("#mode").on("click", function() {
 
 //end of trip
 
-document.getElementById("getDirections").onclick = function(){
+// document.getElementById("getDirections").onclick = function(){
 
-  var tripStart = document.getElementById("start").value;
-  console.log(tripStart);
+//   var tripStart = document.getElementById("start").value;
+//   console.log(tripStart);
 
-  var tripEnd = document.getElementById("destination").value;
-  console.log(tripEnd);
-}
+//   var tripEnd = document.getElementById("destination").value;
+//   console.log(tripEnd);
+// }
 
 //$("#destination").on("click", function() {
   //tripEnd = document.querySelector('input[name="text"]:checked').value;
@@ -170,6 +185,21 @@ function submitForm(event) {
   start = document.getElementById("start").value;
   end = document.getElementById("destination").value;
 
+  console.log(start)
+  console.log(end)
+
+  // bundle the data
+  var trip = {
+    origin: start,
+    destination: end
+  }
+
+  savedTrips.push(trip);
+
+  localStorage.setItem("trips", JSON.stringify(savedTrips))
+
+  // console.log(trip);
+
   // run directions function
   runDirection(start, end);
 
@@ -183,7 +213,7 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
-//call opentrip to get attractions along route
+// call opentrip to get attractions along route
 // var getMapObject = function () {
 //   var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
 //   fetch(response).then(function (response) {
@@ -197,8 +227,16 @@ form.addEventListener('submit', submitForm);
 
 // getMapObject();
 
-//allow user to save a trip
-//angelo
+// allow user to save a trip
+// angelo
+// var saveTasks = function() {
+  // localStorage.setItem(tripEnd);
+// }
 
+// var saveTasks = function() {
+  // localStorage.setItem(tripStart);
+// }
 
-//future problem-- what if user changes input
+// JSON.parse(window.localStorage.getItem("tripStart", "tripEnd")) || []; 
+
+// future problem-- what if user changes input
