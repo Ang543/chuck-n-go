@@ -1,22 +1,15 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-style: italic;
   font-weight: bold;
-  font-family: 'Bebas Neue', cursive;
- 
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 :root {
-  --primary-color: #f48fb1;
+  --primary-color: #ffaac7;
   --secondary-color: #024e76;
-  --tertiary-color: #39a6b2;
+  --tertiary-color: /*#39a6b2*/ #a3d8df;
   --shadow: rgba(0, 0, 0, 0.5);
-}
-
-.row {
-  margin: 10px;
-  padding: 2px;
 }
 
 .body {
@@ -32,27 +25,31 @@ h1, h2, h3, h4 {
 }
 
 header h1 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 100px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: italic;
+  font-size: 17vw;
   text-shadow: 0 0 10px var(--shadow);
-}
-
-#header-img {
-  width: 1vh;
-}
-
-.row {
-  color: var(--secondary-color);
 }
 
 .background {
   background-color: var(--tertiary-color);
 }
 
+.row {
+  margin: 10px;
+  padding: 2px;
+  color: var(--secondary-color);
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+  margin-right: 5px;
+}
+
 #jokeP {
-  font-size: 30px;
-  font-style: italic;
-  text-shadow: 0 0 10px var(--shadow);
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 0 15px var(--shadow);
 }
 
 #map {
@@ -62,22 +59,17 @@ header h1 {
   box-shadow: 0 1px 5px rgba(0,0,0,0.65);
 }
 
+#places-container {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .formBlock {
   font-family: 'Courier New', Courier, monospace;
   background-color: #FFF;
   border: 1px solid #ddd;
-  /*position: absolute;*/
-  /*top: 615px;*/
-  
-  /*padding: 10px;
-  z-index: 999;*/
   margin-bottom: 20px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.65);
   border-radius: 5px;
-}
-
-.vdivide {
-  margin-bottom: 20px;
 }
 
 .leaflet-top .leaflet-control {
@@ -115,10 +107,17 @@ input:nth-child(1) {
   .chuck {
     margin-top: 20px;
   }
+  header h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20vw;
+    text-shadow: 0 0 10px var(--shadow);
+  }
+  #form1 {
+    margin-bottom: 50px;
+  }
 }
 @media (min-width: 601px) {
   .chuck {
     margin-top: 11px;
-    max-height: 50%;
   }
 }

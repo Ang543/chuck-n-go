@@ -301,3 +301,24 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
+
+
+// complete clear history button
+ 
+//function clearHistory() {
+//localStorage.clear();
+//}
+
+//$("#clear-history").on("click", function() {
+//  localStorage.clear();
+//}
+
+//form.addEventListener(, clearHistory);
+ 
+//(("#clear-history").bind("click"));
+
+$("#clear-history").bind("click", (function () {
+		
+	localStorage.clear();
+			
+}));
