@@ -9,6 +9,11 @@ var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 var thingsToSee = [];
+var whereTo = "";
+var activity = "";
+var placesEl = document.querySelector("#places-container");
+var SearchTerm = document.querySelector("#search-term");
+
 
 //get chuckjoke from api and display for user for every new trip
 //dennis
@@ -39,28 +44,116 @@ function jokeData() {
 
 }
   jokeData()
+  
+
+ 
+  
+  
 
   //call opentrip to get attractions along route
 var getMapObject = function () {
-  var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenTrip);
-  fetch(response).then(function (response) {
+  
+
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+
+
+  fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
+
+      startLat = data.features[0].geometry.coordinates[0];
+      startLong = data.features[0].geometry.coordinates[1];
+      whereTo = data.features[0].properties.name;
+      // console.log(data.features);
+      // console.log(startLat,startLong,whereTo);
+      placesToSee(data);
+
     });
   });
-};
+
+ 
 
 
+     var placesToSee = function (data){
+      placesEl.textContent = ";"
+    
 
-getMapObject();
+      for (var i = 0; i < data.features.length; i++) {
+        // format repo name
+        var whereToList = data.features[i].properties.name
+        console.log(whereToList);
+      
+        // create a container for each repo
+        var thePlace = document.createElement("div");
+        thePlace.classList = "list";
+      
+        // create a span element to hold repository name
+        var titleEl = document.createElement("span");
+        titleEl.textContent = whereToList;
+      
+        // append to container
+        thePlace.appendChild(titleEl);
+      
+        // append container to the dom
+        placesEl.appendChild(thePlace);
+      }
+
+      
+    
+
+      // console.log(startLat,startLong,whereTo);
+
+      //
+    }
+      
+ 
+
+}
+
+$("#getDirections").on("click", function() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //adds checkbox value to global var array thingsToSee
+  for (var checkbox of checkboxes){
+      thingsToSee.push(checkbox.value);
+      
+  }
+  if(thingsToSee == "attractions"){
+    activity = "amusements"
+    
+    
+  }
+  if(thingsToSee == "hotels"){
+    activity = "accomodations"
+    
+  }
+  if(thingsToSee == "scenic views"){
+    activity = "natural"
+   
+  }
+  if(thingsToSee == "dining"){
+    activity = "foods"
+    
+  }
+  if(thingsToSee == "entertainment"){
+    activity = "theatres_and_entertainments"
+    
+  }
+  
+  
+  getMapObject();
+  
+
+});
+  
+
 
 //capture user input for tansport mode
 //hannah
-$("#mode").on("click", function() {
-  modeChoice = document.querySelector('input[name="modes"]:checked').value;
-  console.log(modeChoice);
-});
 
+// $("#mode").on("click", function() {
+//   var mode = document.querySelector('input[name="modes"]:checked').value;
+//   console.log(mode);
+// });
 //capture user input for to and from
 //angelo
 
@@ -92,14 +185,7 @@ document.getElementById("getDirections").onclick = function(){
 
 //capture user input for things they want to see
 //hannah
-$("#getDirections").on("click", function() {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  //adds checkbox value to global var array thingsToSee
-  for (var checkbox of checkboxes){
-      thingsToSee.push(checkbox.value);
-  }
-  // console.log(thingsToSee);
-});
+
 
 //call Mq to get route using user inputs
 //dennis
@@ -118,7 +204,7 @@ let map = L.map('map', {
       map = L.map('map', {
           layers: MQ.mapLayer(),
           center: [40.0583, -74.4057],
-          zoom: 8
+          zoom: 12
       });
       
       var dir = MQ.routing.directions();
@@ -128,7 +214,9 @@ let map = L.map('map', {
               start,
               end
           ]
+          
       });
+      console.log(dir.route);
   
 
       CustomRouteLayer = MQ.Routing.RouteLayer.extend({
@@ -196,22 +284,3 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
-//call opentrip to get attractions along route
-// var getMapObject = function () {
-//   var response = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=museums&format=geojson&apikey=" + apiOpenKey);
-//   fetch(response).then(function (response) {
-//     response.json().then(function (data) {
-//       console.log(data);
-//     });
-//   });
-// };
-
-
-
-// getMapObject();
-
-//allow user to save a trip
-//angelo
-
-
-//future problem-- what if user changes input
