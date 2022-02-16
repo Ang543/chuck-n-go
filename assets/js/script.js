@@ -117,23 +117,24 @@ $("#getDirections").on("click", function() {
       thingsToSee.push(checkbox.value);
       
   }
-  if(thingsToSee == "Attractions"){
+  if(thingsToSee == "attractions"){
     activity = "amusements"
     
+    
   }
-  else if(thingsToSee == "hotels"){
+  if(thingsToSee == "hotels"){
     activity = "accomodations"
     
   }
-  else if(thingsToSee == "scenic views"){
+  if(thingsToSee == "scenic views"){
     activity = "natural"
    
   }
-  else if(thingsToSee == "dining"){
+  if(thingsToSee == "dining"){
     activity = "foods"
     
   }
-  else if(thingsToSee == "entertainment"){
+  if(thingsToSee == "entertainment"){
     activity = "theatres_and_entertainments"
     
   }
