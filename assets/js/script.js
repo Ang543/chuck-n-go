@@ -54,7 +54,7 @@ function jokeData() {
 var getMapObject = function () {
   
 
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=amusements&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
 
   fetch(opentripUrl).then(function (response) {
@@ -65,7 +65,8 @@ var getMapObject = function () {
       startLong = data.features[0].geometry.coordinates[1];
       whereTo = data.features[0].properties.name;
       // console.log(data.features);
-      console.log(startLat,startLong,wherTo);
+      // console.log(startLat,startLong,whereTo);
+      placesToSee(data);
 
     });
   });
@@ -114,9 +115,30 @@ $("#getDirections").on("click", function() {
   //adds checkbox value to global var array thingsToSee
   for (var checkbox of checkboxes){
       thingsToSee.push(checkbox.value);
-      console.log(thingsToSee);
-
+      
   }
+  if(thingsToSee == "attractions"){
+    activity = "amusements"
+    
+  }
+  else if(thingsToSee == "hotels"){
+    activity = "accomodations"
+    
+  }
+  else if(thingsToSee == "scenic views"){
+    activity = "natural"
+   
+  }
+  else if(thingsToSee == "dining"){
+    activity = "foods"
+    
+  }
+  else if(thingsToSee == "entertainment"){
+    activity = "theatres_and_entertainments"
+    
+  }
+  
+  
   getMapObject();
   
 
@@ -191,7 +213,9 @@ let map = L.map('map', {
               start,
               end
           ]
+          
       });
+      console.log(dir.route);
   
 
       CustomRouteLayer = MQ.Routing.RouteLayer.extend({
