@@ -314,3 +314,8 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
+
+
+// work in progress clear history button
+// $("#clear-history").on("click", function(localStorage.clear()));
+
