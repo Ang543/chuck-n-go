@@ -283,24 +283,4 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
-//loop to grab attractions from opentrip api
-// if(thingsToSee == "attractions"){
-  
- 
-
-// }else if(thingsToSee == "scenic views"){
-//   console.log("sceanic picked");
-//   break;
-// }
-// else if(thingsToSee == "hotels"){
-//   console.log("hotels was pic picked");
-// } else {
-//   alert("no attractions have been selected")
-// }
-  
-
-//allow user to save a trip
-//angelo
-
-
-//future problem-- what if user changes input
+/
