@@ -316,6 +316,22 @@ form.addEventListener('submit', submitForm);
 
 
 
-// work in progress clear history button
-// $("#clear-history").on("click", function(localStorage.clear()));
+// complete clear history button
+ 
+//function clearHistory() {
+//localStorage.clear();
+//}
 
+//$("#clear-history").on("click", function() {
+//  localStorage.clear();
+//}
+
+//form.addEventListener(, clearHistory);
+ 
+//(("#clear-history").bind("click"));
+
+$("#clear-history").bind("click", (function () {
+		
+	localStorage.clear();
+			
+}));

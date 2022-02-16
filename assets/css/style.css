@@ -10,7 +10,7 @@
 :root {
   --primary-color: #f48fb1;
   --secondary-color: #024e76;
-  --tertiary-color: #39a6b2;
+  --tertiary-color: /*#39a6b2*/ #aae7ee;;
   --shadow: rgba(0, 0, 0, 0.5);
 }
 
