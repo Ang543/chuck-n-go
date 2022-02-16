@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-style: italic;
   font-weight: bold;
@@ -15,12 +14,21 @@
   --shadow: rgba(0, 0, 0, 0.5);
 }
 
+.row {
+  margin: 10px;
+  padding: 2px;
+}
+
 .body {
   background-color: var( --tertiary-color);
 }
 
 header {
   background-color: var(--primary-color);
+}
+
+h1, h2, h3, h4 {
+  text-shadow: 0 0 10px var(--shadow);
 }
 
 header h1 {
@@ -41,21 +49,9 @@ header h1 {
   background-color: var(--tertiary-color);
 }
 
-.circle responsive-img col s2 {
+.circle responsive-img {
   display: flex;
   flex-wrap: wrap;
-}
-
-header h2 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-header h4 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-section h2 {
-  text-shadow: 0 0 10px var(--shadow);
 }
 
 #jokeP {
@@ -64,28 +60,21 @@ section h2 {
   text-shadow: 0 0 10px var(--shadow);
 }
 
-
 #map {
   height:400px;
-  width: 50%;
-  position: absolute;
-  right:50px;
-  bottom:1opx;
 }
 
 .formBlock {
   font-family: 'Courier New', Courier, monospace;
-  max-width: 600px;
   background-color: #FFF;
   border: 1px solid #ddd;
-  position: absolute;
-  top: 615px;
-  left: 80px;
-  padding: 10px;
-  z-index: 999;
+  /*position: absolute;*/
+  /*top: 615px;*/
+  
+  /*padding: 10px;
+  z-index: 999;*/
   box-shadow: 0 1px 5px rgba(0,0,0,0.65);
   border-radius: 5px;
-  width: 100%;
 }
 
 .leaflet-top .leaflet-control {
@@ -106,20 +95,12 @@ section h2 {
 }
 
 .ratiocheckbox {
-  color: darkblue;
+  color: var(--secondary-color);
   text-shadow: 0 0 10px var(--shadow);
 }
 
 input:nth-child(1) {
   margin-bottom: 10px;
-}
-
-section h3 {
-  text-shadow: 0 0 10px var(--shadow);
-}
-
-section h4 {
-  text-shadow: 0 0 10px var(--shadow);
 }
 
 #text {
