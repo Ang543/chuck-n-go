@@ -15,10 +15,6 @@
 </head>
 
 <body class="body">
-  <div id="saved-trips-container">
-    
-  </div>
-
 
   <header class="row">
     <img class="circle responsive-img col s2" src="./assets/image/Chuck.jpg">
@@ -85,15 +81,23 @@
           <input type="text" name="end" class="input" id="destination" placeholder="Choose starting point" />
           <button type="submit" id="getDirections">Get Directions</button>
           <button type="save">Save Directions</button>
+
+          <div class=formBlock id="saved-trips-container">
+
+
+            <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+            <p class="p-3 mb-2 bg-secondary text-white">Search History:</p>
+            <form id="history"></form>
+          </div>
         </form>
       </div>
     </section>
-  </section>
+    </section>
 
   </div>
 
-  
- 
+
+
 
 
   </div>
