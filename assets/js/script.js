@@ -19,7 +19,7 @@ function jokeData() {
         throw Error("Error");
       }
       return response.json();
-    })git 
+    }) 
     .then(data => { 
       console.log(data.value)
       document.getElementById("jokeP").append(data.value)     
