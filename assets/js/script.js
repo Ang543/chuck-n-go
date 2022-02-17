@@ -108,6 +108,7 @@ var getMapObject = function () {
 
   }
 
+ 
 
 
 }
@@ -269,12 +270,17 @@ function submitForm(event) {
   // delete current map layer
   map.remove();
 
+
+
+
+ 
+
   // getting form data
   start = document.getElementById("start").value;
   end = document.getElementById("destination").value;
 
-  console.log(start)
-  console.log(end)
+  // console.log(start)
+  // console.log(end)
 
   // bundle the data
   var trip = {
@@ -304,7 +310,7 @@ form.addEventListener('submit', submitForm);
 
 
 // complete clear history button
- 
+
 //function clearHistory() {
 //localStorage.clear();
 //}
@@ -314,11 +320,11 @@ form.addEventListener('submit', submitForm);
 //}
 
 //form.addEventListener(, clearHistory);
- 
+
 //(("#clear-history").bind("click"));
 
 $("#clear-history").bind("click", (function () {
-		
-	localStorage.clear();
-			
+
+  localStorage.clear();
+
 }));
