@@ -98,6 +98,11 @@ input:nth-child(1) {
   margin-bottom: 10px;
 }
 
+#clear-history {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
+}
+
 #text {
   text-shadow: 0 0 10px var(--shadow);
   color: var(--secondary-color);
