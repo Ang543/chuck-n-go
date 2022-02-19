@@ -17,9 +17,11 @@ var placesEl = document.querySelector("#places-container");
 var SearchTerm = document.querySelector("#search-term");
 var historyEl = document.querySelector("#history")
 
+
+//to get inputs into history box
 function renderHistory() {
   var savedTrips = JSON.parse(localStorage.getItem("trips")) || []; // short circuit
-      historyEl.innerHTML = "";
+  historyEl.innerHTML = "";
   for (let i = 0; i < savedTrips.length; i++) {
     var newButton = document.createElement("button");
     newButton.classList.add('history-button');
@@ -35,7 +37,6 @@ function renderHistory() {
 
 
 //get chuckjoke from api and display for user for every new trip
-//dennis
 function jokeData() {
   fetch("https://api.chucknorris.io/jokes/random")
     .then(response => {
@@ -53,6 +54,7 @@ function jokeData() {
     });
 }
 
+// show the chuck norris joke on website
 showJoke = (dataObjects, div) => {
   const dataDiv = document.querySelector(div)
   dataObjects.forEach(dataObject => {
@@ -64,151 +66,7 @@ showJoke = (dataObjects, div) => {
 }
 jokeData()
 
-
-
-
-
-
-//call opentrip to get attractions along route
-// var getMapObject = function () {
-
-
-//   var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
-
-
-//   fetch(opentripUrl).then(function (response) {
-//     response.json().then(function (data) {
-//       console.log(data);
-
-//       startLat = data.features[0].geometry.coordinates[0];
-//       startLong = data.features[0].geometry.coordinates[1];
-//       whereTo = data.features[0].properties.name;
-//       // console.log(data.features);
-//       // console.log(startLat,startLong,whereTo);
-//       placesToSee(data);
-
-//     });
-//   });
-
-
-
-
-//      var placesToSee = function (data){
-//       placesEl.textContent = ";"
-
-
-//       for (var i = 0; i < data.features.length; i++) {
-//         // format repo name
-//         var whereToList = data.features[i].properties.name
-//         console.log(whereToList);
-
-//         // create a container for each repo
-//         var thePlace = document.createElement("div");
-//         thePlace.classList = "list";
-
-//         // create a span element to hold repository name
-//         var titleEl = document.createElement("span");
-//         titleEl.textContent = whereToList;
-
-//         // append to container
-//         thePlace.appendChild(titleEl);
-
-//         // append container to the dom
-//         placesEl.appendChild(thePlace);
-//       }
-
-
-
-
-//       // console.log(startLat,startLong,whereTo);
-
-//       //
-//     }
-
-
-
-// }
-
-// $("#getDirections").on("click", function() {
-//   var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-//   //adds checkbox value to global var array thingsToSee
-//   for (var checkbox of checkboxes){
-//       thingsToSee.push(checkbox.value);
-
-//   }
-//   if(thingsToSee == "attractions"){
-//     activity = "amusements"
-
-
-//   }
-//   if(thingsToSee == "hotels"){
-//     activity = "accomodations"
-
-//   }
-//   if(thingsToSee == "scenic views"){
-//     activity = "natural"
-
-//   }
-//   if(thingsToSee == "dining"){
-//     activity = "foods"
-
-//   }
-//   if(thingsToSee == "entertainment"){
-//     activity = "theatres_and_entertainments"
-
-//   }
-
-
-//   getMapObject();
-
-
-// });
-
-
-
-//capture user input for tansport mode
-//hannah
-
-// $("#mode").on("click", function() {
-//   var mode = document.querySelector('input[name="modes"]:checked').value;
-//   console.log(mode);
-// });
-//capture user input for to and from
-//angelo
-
-//start of trip
-
-
-
-
-//$("#start").on("click", function() {
-//tripStart = document.querySelector('input[name="text"]:checked').value;
-//console.log(tripStart);
-//});
-
-//end of trip
-
-// document.getElementById("getDirections").onclick = function(){
-
-//   var tripStart = document.getElementById("start").value;
-//   console.log(tripStart);
-
-//   var tripEnd = document.getElementById("destination").value;
-//   console.log(tripEnd);
-// }
-
-//$("#destination").on("click", function() {
-//tripEnd = document.querySelector('input[name="text"]:checked').value;
-//console.log(tripEnd);
-//});
-
-//capture user input for things they want to see
-//hannah
-
-
 //call Mq to get route using user inputs
-//dennis
-
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
@@ -216,7 +74,7 @@ let map = L.map('map', {
   zoom: 8
 });
 
-
+//to get directions on the map
 function runDirection(start, end) {
   map.remove();
   // recreating new map layer after removal
@@ -236,7 +94,7 @@ function runDirection(start, end) {
 
   });
 
-
+  //create icons for from and to
   CustomRouteLayer = MQ.Routing.RouteLayer.extend({
     createStartMarker: (location) => {
       var custom_icon;
@@ -282,32 +140,28 @@ function runDirection(start, end) {
 function submitForm(event) {
   event.preventDefault();
 
-  // delete current map layer
-  // map.remove();
-
   // getting form data
   start = document.getElementById("start").value;
   end = document.getElementById("destination").value;
-
-  console.log(start)
-  console.log(end)
 
   // bundle the data
   var trip = {
     origin: start,
     destination: end
   }
+
+  //save to localStorage
   var savedTrips = JSON.parse(localStorage.getItem("trips")) || []; // short circuit
   savedTrips.push(trip);
 
   localStorage.setItem("trips", JSON.stringify(savedTrips))
   renderHistory();
-  // console.log(trip);
 
   // run directions function
   runDirection(start, end);
   getLonLat(start, end);
-    // reset form
+
+  // reset form
   document.getElementById("form").reset();
 }
 
@@ -317,36 +171,25 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
+//to get the lon and lat from the directions
 function getLonLat(start, end) {
-fetch("http://www.mapquestapi.com/geocoding/v1/batch?key=" + apiMQ + "&location=" + start + "&location=" + end)
-  .then(response => {
-    return response.json()
-  })
-  .then(data => console.log(data));
+  fetch("http://www.mapquestapi.com/geocoding/v1/batch?key=" + apiMQ + "&location=" + start + "&location=" + end)
+    .then(response => {
+      return response.json()
+    })
+    .then(data => console.log(data));
 
 };
 
-
-// complete clear history button
-
-//function clearHistory() {
-//localStorage.clear();
-//}
-
-//$("#clear-history").on("click", function() {
-//  localStorage.clear();
-//}
-
-//form.addEventListener(, clearHistory);
-
-//(("#clear-history").bind("click"));
-
+//clear the history box
 $("#clear-history").bind("click", (function () {
 
   localStorage.clear();
 
 }));
-historyEl.addEventListener("click", function(event) {
+
+//to add the start and end from history to the map
+historyEl.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches(".history-button")) {
