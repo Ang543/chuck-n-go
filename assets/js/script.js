@@ -182,8 +182,11 @@ function getLonLat(start, end) {
 };
 
 //clear the history box
+
+
 $("#clear-history").bind("click", (function () {
 
+  window.location.reload();
   localStorage.clear();
 
 }));
