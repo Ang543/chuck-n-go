@@ -9,10 +9,11 @@ var dineEL = document.querySelector("#dine")
 var entEl = document.querySelector("#ent")
 var savedTripsDiv = document.querySelector("#saved-trips-container");
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
-var thingsToSee = [];
-var whereTo = "";
+// var thingsToSee = [];
+var getLat = "";
 var activity = "";
 var placesEl = document.querySelector("#places-container");
+var placesEl2 = document.querySelector("#places-container2");
 var SearchTerm = document.querySelector("#search-term");
 
 
@@ -60,13 +61,178 @@ showJoke = (dataObjects, div) => {
 }
 jokeData()
 
+// default map layer
+let map = L.map('map', {
+  layers: MQ.mapLayer(),
+  center: [40.0583, -74.4057],
+  zoom: 8
+});
+
+
+function runDirection(start, end) {
+
+  // recreating new map layer after removal
+  map = L.map('map', {
+    layers: MQ.mapLayer(),
+    center: [40.0583, -74.4057],
+    zoom: 12
+  });
+
+  var dir = MQ.routing.directions();
+
+  dir.route({
+    locations: [
+      start,
+      end
+    ]
+
+  });
+  console.log(start,end);
+
+
+  CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+    createStartMarker: (location) => {
+      var custom_icon;
+      var marker;
+
+      custom_icon = L.icon({
+        iconUrl: './assets/image/red.png',
+        iconSize: [20, 29],
+        iconAnchor: [10, 29],
+        popupAnchor: [0, -29]
+      });
+
+      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+      console.log(location.latLng);
+      return marker;
+    },
+    
+
+    createEndMarker: (location) => {
+      var custom_icon;
+      var marker;
+
+      custom_icon = L.icon({
+        iconUrl: './assets/image/blue.png',
+        iconSize: [20, 29],
+        iconAnchor: [10, 29],
+        popupAnchor: [0, -29]
+      });
+
+      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+      console.log(location.latLng);
+      return marker;
+      
+    }
+  });
+
+  map.addLayer(new CustomRouteLayer({
+    directions: dir,
+    fitBounds: true
+  }));
+}
+
+
+// function that runs when form submitted
+function submitForm(event) {
+  event.preventDefault();
+
+  // delete current map layer
+  map.remove();
 
 
 
 
+
+
+  // getting form data
+  start = document.getElementById("start").value;
+  end = document.getElementById("destination").value;
+
+  // console.log(start)
+  // console.log(end)
+
+  // bundle the data
+  var trip = {
+    origin: start,
+    destination: end
+  }
+
+  savedTrips.push(trip);
+
+  localStorage.setItem("trips", JSON.stringify(savedTrips))
+
+  // console.log(trip);
+
+  // run directions function
+  runDirection(start, end);
+
+  // reset form
+  document.getElementById("form").reset();
+}
+
+// asign the form to form variable
+const form = document.getElementById('form');
+
+// call the submitForm() function when submitting the form
+form.addEventListener('submit', submitForm);
+
+
+
+
+
+// var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
 //call opentrip to get attractions along route
 var getMapObject = function () {
+
+
+}
+
+
+var placesToSee = function () {
+
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=" + getLat + "&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+
+  fetch(opentripUrl).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+
+      // startLat = data.features[0].geometry.coordinates[0];
+      // startLong = data.features[0].geometry.coordinates[1];
+      // whereTo = data.features[0].properties.name;
+      // console.log(data.features);
+      // console.log(startLat,startLong,whereTo);
+
+
+
+
+      for (var i = 0; i < data.features.length; i++) {
+        // format repo name
+        var whereToList = data.features[i].properties.name
+        console.log(whereToList);
+
+        // create a container for each repo
+        var thePlace = document.createElement("div");
+        thePlace.classList = "list";
+
+        // create a span element to hold repository name
+        var titleEl = document.createElement("span");
+        titleEl.textContent = whereToList;
+
+        // append to container
+        thePlace.appendChild(titleEl);
+
+        // append container to the dom
+        placesEl.appendChild(thePlace);
+      }
+
+
+    });
+  });
+  
+}
+var placesToSee2 = function () {
 
   var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
@@ -74,79 +240,131 @@ var getMapObject = function () {
     response.json().then(function (data) {
       console.log(data);
 
-      startLat = data.features[0].geometry.coordinates[0];
-      startLong = data.features[0].geometry.coordinates[1];
-      whereTo = data.features[0].properties.name;
+      // startLat = data.features[0].geometry.coordinates[0];
+      // startLong = data.features[0].geometry.coordinates[1];
+      // whereTo = data.features[0].properties.name;
       // console.log(data.features);
       // console.log(startLat,startLong,whereTo);
-      placesToSee(data);
+
+
+
+
+      for (var i = 0; i < data.features.length; i++) {
+        // format repo name
+        var whereToList = data.features[i].properties.name
+        console.log(whereToList);
+
+        // create a container for each repo
+        var thePlace2 = document.createElement("div");
+        thePlace2.classList = "list2";
+
+        // create a span element to hold repository name
+        var titleEl = document.createElement("span");
+        titleEl.textContent = whereToList;
+
+        // append to container
+        thePlace2.appendChild(titleEl);
+
+        // append container to the dom
+        placesEl2.appendChild(thePlace2);
+      }
+
 
     });
   });
-
-  var placesToSee = function (data) {
-
-    for (var i = 0; i < data.features.length; i++) {
-      // format repo name
-      var whereToList = data.features[i].properties.name
-      console.log(whereToList);
-
-      // create a container for each repo
-      var thePlace = document.createElement("div");
-      thePlace.classList = "list";
-
-      // create a span element to hold repository name
-      var titleEl = document.createElement("span");
-      titleEl.textContent = whereToList;
-
-      // append to container
-      thePlace.appendChild(titleEl);
-
-      // append container to the dom
-      placesEl.appendChild(thePlace);
-    }
-
-  }
-
- 
-
-
 }
 
-$("#getDirections").on("click", function () {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  //adds checkbox value to global var array thingsToSee
-  for (var checkbox of checkboxes) {
-    thingsToSee.push(checkbox.value);
-
-  }
-  if (thingsToSee == "attractions") {
-    activity = "amusements"
+// Select all checkboxes with the name 'settings' using querySelectorAll.
+var checkboxes = document.querySelectorAll("input[type=checkbox][name=things-input]");
+let thingsToSee = []
 
 
-  }
-  if (thingsToSee == "hotels") {
-    activity = "accomodations"
-
-  }
-  if (thingsToSee == "scenic views") {
-    activity = "natural"
-
-  }
-  if (thingsToSee == "dining") {
-    activity = "foods"
-
-  }
-  if (thingsToSee == "entertainment") {
-    activity = "theatres_and_entertainments"
-
-  }
 
 
-  getMapObject();
+// Use Array.forEach to add an event listener to each checkbox.
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('change', function () {
+    thingsToSee =
+      Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
+        .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
+        .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
 
+    console.log(thingsToSee)
+
+
+    if (thingsToSee == "dining") {
+      activity = "foods"
+      $("#getDirections").on("click", function () {
+        placesToSee()
+      })
+    }
+    else if (thingsToSee == "hotels") {
+      activity = "accomodations"
+      $("#getDirections").on("click", function () {
+        placesToSee2()
+      })
+
+    }
+    if (thingsToSee == "scenic views") {
+      activity = "natural"
+
+    }
+    if (thingsToSee == "dining") {
+      activity = "foods"
+
+    }
+    if (thingsToSee == "entertainment") {
+      activity = "theatres_and_entertainments"
+    }
+  })
 
 });
+
+
+
+
+// $("#getDirections").on("click", function () {
+//   var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+//   //adds checkbox value to global var array thingsToSee
+//   for (var checkbox of checkboxes) {
+//     thingsToSee.push(checkbox.value);
+//     console.log();
+
+
+//   }
+//   if (thingsToSee == checkbox.value) {
+//     getMapObject()
+
+//   }
+//  if(thingsToSee == checkbox.value)
+
+
+
+
+
+
+// if (thingsToSee == "hotels") {
+//   activity = "accomodations"
+
+// }
+// if (thingsToSee == "scenic views") {
+//   activity = "natural"
+
+// }
+// if (thingsToSee == "dining") {
+//   activity = "foods"
+
+// }
+// if (thingsToSee == "entertainment") {
+//   activity = "theatres_and_entertainments"
+
+// }
+
+
+
+
+
+
 
 
 
@@ -193,119 +411,6 @@ $("#getDirections").on("click", function () {
 //call Mq to get route using user inputs
 //dennis
 
-// default map layer
-let map = L.map('map', {
-  layers: MQ.mapLayer(),
-  center: [40.0583, -74.4057],
-  zoom: 8
-});
-
-
-function runDirection(start, end) {
-
-  // recreating new map layer after removal
-  map = L.map('map', {
-    layers: MQ.mapLayer(),
-    center: [40.0583, -74.4057],
-    zoom: 12
-  });
-
-  var dir = MQ.routing.directions();
-
-  dir.route({
-    locations: [
-      start,
-      end
-    ]
-
-  });
-  console.log(dir.route);
-
-
-  CustomRouteLayer = MQ.Routing.RouteLayer.extend({
-    createStartMarker: (location) => {
-      var custom_icon;
-      var marker;
-
-      custom_icon = L.icon({
-        iconUrl: './assets/image/red.png',
-        iconSize: [20, 29],
-        iconAnchor: [10, 29],
-        popupAnchor: [0, -29]
-      });
-
-      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-
-      return marker;
-    },
-
-    createEndMarker: (location) => {
-      var custom_icon;
-      var marker;
-
-      custom_icon = L.icon({
-        iconUrl: './assets/image/blue.png',
-        iconSize: [20, 29],
-        iconAnchor: [10, 29],
-        popupAnchor: [0, -29]
-      });
-
-      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-
-      return marker;
-    }
-  });
-
-  map.addLayer(new CustomRouteLayer({
-    directions: dir,
-    fitBounds: true
-  }));
-}
-
-
-// function that runs when form submitted
-function submitForm(event) {
-  event.preventDefault();
-
-  // delete current map layer
-  map.remove();
-
-
-
-
- 
-
-  // getting form data
-  start = document.getElementById("start").value;
-  end = document.getElementById("destination").value;
-
-  // console.log(start)
-  // console.log(end)
-
-  // bundle the data
-  var trip = {
-    origin: start,
-    destination: end
-  }
-
-  savedTrips.push(trip);
-
-  localStorage.setItem("trips", JSON.stringify(savedTrips))
-
-  // console.log(trip);
-
-  // run directions function
-  runDirection(start, end);
-
-  // reset form
-  document.getElementById("form").reset();
-}
-
-// asign the form to form variable
-const form = document.getElementById('form');
-
-// call the submitForm() function when submitting the form
-form.addEventListener('submit', submitForm);
 
 
 
@@ -326,5 +431,4 @@ form.addEventListener('submit', submitForm);
 $("#clear-history").bind("click", (function () {
 
   localStorage.clear();
-
 }));
