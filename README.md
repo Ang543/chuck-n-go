@@ -19,7 +19,7 @@ Here is a list of API's used in the making of Chuck N' Go:
 
 ## Repository  -  https://github.com/Ang543/chuck-n-go.git
 
-## Website
+## Website - https://ang543.github.io/chuck-n-go/
 
 ## Screenshot
 Screenshot: ![screenshot](https://github.com/Ang543/chuck-n-go/blob/feature/mapquest/assets/image/ChucknGo-screenshot.jpg)
