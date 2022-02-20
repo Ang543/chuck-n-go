@@ -32,10 +32,6 @@ function renderHistory() {
   }
 }
 
-
-
-
-
 //get chuckjoke from api and display for user for every new trip
 function jokeData() {
   fetch("https://api.chucknorris.io/jokes/random")
@@ -64,7 +60,7 @@ showJoke = (dataObjects, div) => {
   })
 
 }
-jokeData()
+jokeData();
 
 //call Mq to get route using user inputs
 // default map layer
@@ -135,7 +131,6 @@ function runDirection(start, end) {
   }));
 }
 
-
 // function that runs when form submitted
 function submitForm(event) {
   event.preventDefault();
@@ -161,6 +156,9 @@ function submitForm(event) {
   runDirection(start, end);
   getLonLat(start, end);
 
+  //display places to see and list after user submits their input
+  document.getElementById("places").style.display = "block";
+
   // reset form
   document.getElementById("form").reset();
 }
@@ -182,8 +180,6 @@ function getLonLat(start, end) {
 };
 
 //clear the history box
-
-
 $("#clear-history").bind("click", (function () {
 
   window.location.reload();
@@ -200,6 +196,9 @@ historyEl.addEventListener("click", function (event) {
     var dataD = element.getAttribute("data-destination");
     runDirection(dataO, dataD)
   };
+
+  //display places to see and list after user selects a trip history
+  document.getElementById("places").style.display = "block";
 });
 
 renderHistory();

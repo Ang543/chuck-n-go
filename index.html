@@ -33,100 +33,88 @@
 
   <!-- start of the travel section -->
   <div class="row">
-    <div class="col s12 l6">
-      <section id="form1" class>
-        <div>
-          <h3>Where do you want to travel today?</h3>
-        </div>
-        <span class="radiowrapper">
-          <div class="col s4">
-            <input type="radio" name="modes" id="car" value="car" checked />
-            <label for="car" class="ratiocheckbox">Car</label>
-          </div>
-          <div class="col s4">
-            <input type="radio" name="modes" id="walk" value="walk" />
-            <label for="walk" class="ratiocheckbox">Walk</label>
-          </div>
-          <div class="col s4">
-            <input type="radio" name="modes" id="bus" value="bus" />
-            <label for="bus" class="ratiocheckbox">Bus</label>
-          </div>
-        </span>
-      </section>
+    <div class="col s12 l6" id="travel">
+        <input type="radio" name="modes" id="car" value="car" checked />
     </div>
-    <!-- end of the travel section -->
+  </div>
+  <!-- end of the travel section -->
 
-    <!-- start of the things to do section -->
-    <div id="things" class="row">
-      <h3>Things you want to see along your route:</h3>
-      <section class="checkbox-wrapper col s12 m6 l6">
-        <div class="col s12 m6 l4">
-          <input type="checkbox" name="things-input" id="checkbox1" value="attractions" />
-          <label for="checkbox1" class="ratiocheckbox">Attractions</label>
-        </div>
-        <div class="col s12 m6 l4">
-          <input type="checkbox" name="things-input" id="checkbox2" value="scenic views" />
-          <label for="checkbox2" class="ratiocheckbox">Scenic Views</label>
-        </div>
-        <div class="col s12 m6 l4">
-          <input type="checkbox" name="things-input" id="checkbox3" value="hotels" />
-          <label for="checkbox3" class="ratiocheckbox">Hotels</label>
-        </div>
-        <div class="col s12 m6 l4">
-          <input type="checkbox" name="things-input" id="checkbox4" value="dining" />
-          <label for="checkbox4" class="ratiocheckbox">Dining</label>
-        </div>
-        <div class="col s12 m6 l4">
-          <input type="checkbox" name="things-input" id="checkbox5" value="entertainment" />
-          <label for="checkbox5" class="ratiocheckbox">Entertainment</label>
-        </div>
-      </section>
-    </div>
-    <!-- end of the things to do section -->
-
-    <!-- beginning of the start and end form box-->
-    <section class="row">
-      <div class="formBlock col s12 m5 l5 center-align">
-        <form id="form">
-          <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
-          <input type="text" name="end" class="input" id="destination" placeholder="Choose final destination" />
-          <button type="submit" id="getDirections">Get Directions</button>
-        </form>
+  <!-- start of the things to do section -->
+  <div id="things" class="row">
+    <h3>Things you want to see along your route:</h3>
+    <section class="checkbox-wrapper col s12">
+      <div class="col s12 m6 l2">
+        <input type="checkbox" name="things-input" id="checkbox1" value="attractions" />
+        <label for="checkbox1" class="ratiocheckbox">Attractions</label>
       </div>
-      <div class="col s0 m1 l1"></div>
-      <div class="col s12 m6 l6" id='map'></div>
+      <div class="col s12 m6 l2">
+        <input type="checkbox" name="things-input" id="checkbox2" value="scenic views" />
+        <label for="checkbox2" class="ratiocheckbox">Scenic Views</label>
+      </div>
+      <div class="col s12 m6 l2">
+        <input type="checkbox" name="things-input" id="checkbox3" value="hotels" />
+        <label for="checkbox3" class="ratiocheckbox">Hotels</label>
+      </div>
+      <div class="col s12 m6 l2">
+        <input type="checkbox" name="things-input" id="checkbox4" value="dining" />
+        <label for="checkbox4" class="ratiocheckbox">Dining</label>
+      </div>
+      <div class="col s12 m6 l2">
+        <input type="checkbox" name="things-input" id="checkbox5" value="entertainment" />
+        <label for="checkbox5" class="ratiocheckbox">Entertainment</label>
+      </div>
     </section>
-    <!-- end of the start and end form box -->
+  </div>
+  <!-- end of the things to do section -->
 
-    <!-- start of the view the things to see section -->
-    <div class="row">
-      <div>
-        <h2 class="subtitle col s6">places to see on this trip<span id="search-term"></span></h2>
-      </div>
-      <div id="places-container" class="col s6 list"></div>
+  <!-- beginning of the start and end form box-->
+  <section class="row">
+    <div class="formBlock col s12 m5 l5 center-align">
+      <form id="form">
+        <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
+        <input type="text" name="end" class="input" id="destination" placeholder="Choose final destination" />
+        <button type="submit" id="getDirections">Get Directions</button>
+      </form>
     </div>
+    <div class="col s0 m1 l1"></div>
+    <div class="col s12 m6 l6" id='map'></div>
+  </section>
+  <!-- end of the start and end form box -->
 
-    <div class="formBlock" id="saved-trips-container">
-      <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
-      <p class="p-3 mb-2 bg-secondary text-white">Search History:</p>
-      <div id="history"></div>
+  <!-- start of map section -->
+  <div>
+
+  <!-- end of map section-->
+
+  <!-- start of the view the things to see section -->
+  <div class="row" id="places">
+    <div>
+      <h2 class="subtitle col s6">places to see on this trip<span id="search-term"></span></h2>
     </div>
-    <!-- end of the view the things to see section -->
+    <div id="places-container" class="col s6 list"></div>
+  </div>
 
-    <!-- start of the footer -->
-    <footer class="row" style="height:15px; position: relative;">
-      <div class="col s12 left-align" style="position:absolute; bottom:0;">
-        &copy; 2022 Chuck N Go, Inc.
-      </div>
-    </footer>
-    <!-- end of the footer -->
+  <div class="formBlock" id="saved-trips-container">
+    <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+    <p class="p-3 mb-2 bg-secondary text-white">Search History:</p>
+    <div id="history"></div>
+  </div>
+  <!-- end of the view the things to see section -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"></script>
-    <script
-      src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"></script>
-    <script src='./assets/js/script.js'></script>
+  <!-- start of the footer -->
+  <footer class="row" style="height:15px; position: relative;">
+    <div class="col s12 left-align" style="position:absolute; bottom:0;">
+      &copy; 2022 Chuck N Go, Inc.
+    </div>
+  </footer>
+  <!-- end of the footer -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"></script>
+  <script
+    src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"></script>
+  <script src='./assets/js/script.js'></script>
 </body>
 
 </html>

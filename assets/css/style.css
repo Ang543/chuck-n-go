@@ -35,7 +35,7 @@ header h1 {
   background-color: var(--tertiary-color);
 }
 
-.col s4 {
+#travel {
   display: none;
 }
 
@@ -61,6 +61,10 @@ label {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+}
+
+#places {
+  display: none;
 }
 
 #places-container {
