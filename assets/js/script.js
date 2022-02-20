@@ -10,7 +10,9 @@ var entEl = document.querySelector("#ent")
 var savedTripsDiv = document.querySelector("#saved-trips-container");
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 // var thingsToSee = [];
-var getLat = "";
+var 
+ = "";
+var startLng = "";
 var activity = "";
 var placesEl = document.querySelector("#places-container");
 var placesEl2 = document.querySelector("#places-container2");
@@ -69,114 +71,6 @@ let map = L.map('map', {
 });
 
 
-function runDirection(start, end) {
-
-  // recreating new map layer after removal
-  map = L.map('map', {
-    layers: MQ.mapLayer(),
-    center: [40.0583, -74.4057],
-    zoom: 12
-  });
-
-  var dir = MQ.routing.directions();
-
-  dir.route({
-    locations: [
-      start,
-      end
-    ]
-
-  });
-  console.log(start,end);
-
-
-  CustomRouteLayer = MQ.Routing.RouteLayer.extend({
-    createStartMarker: (location) => {
-      var custom_icon;
-      var marker;
-
-      custom_icon = L.icon({
-        iconUrl: './assets/image/red.png',
-        iconSize: [20, 29],
-        iconAnchor: [10, 29],
-        popupAnchor: [0, -29]
-      });
-
-      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-      console.log(location.latLng);
-      return marker;
-    },
-    
-
-    createEndMarker: (location) => {
-      var custom_icon;
-      var marker;
-
-      custom_icon = L.icon({
-        iconUrl: './assets/image/blue.png',
-        iconSize: [20, 29],
-        iconAnchor: [10, 29],
-        popupAnchor: [0, -29]
-      });
-
-      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-      console.log(location.latLng);
-      return marker;
-      
-    }
-  });
-
-  map.addLayer(new CustomRouteLayer({
-    directions: dir,
-    fitBounds: true
-  }));
-}
-
-
-// function that runs when form submitted
-function submitForm(event) {
-  event.preventDefault();
-
-  // delete current map layer
-  map.remove();
-
-
-
-
-
-
-  // getting form data
-  start = document.getElementById("start").value;
-  end = document.getElementById("destination").value;
-
-  // console.log(start)
-  // console.log(end)
-
-  // bundle the data
-  var trip = {
-    origin: start,
-    destination: end
-  }
-
-  savedTrips.push(trip);
-
-  localStorage.setItem("trips", JSON.stringify(savedTrips))
-
-  // console.log(trip);
-
-  // run directions function
-  runDirection(start, end);
-
-  // reset form
-  document.getElementById("form").reset();
-}
-
-// asign the form to form variable
-const form = document.getElementById('form');
-
-// call the submitForm() function when submitting the form
-form.addEventListener('submit', submitForm);
-
 
 
 
@@ -184,16 +78,136 @@ form.addEventListener('submit', submitForm);
 // var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
 //call opentrip to get attractions along route
-var getMapObject = function () {
 
 
-}
 
 
-var placesToSee = function () {
 
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=" + getLat + "&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
+
+
+
+
+
+  function runDirection(start, end) {
+  
+    // recreating new map layer after removal
+    map = L.map('map', {
+      layers: MQ.mapLayer(),
+      center: [40.0583, -74.4057],
+      zoom: 12
+    });
+  
+    var dir = MQ.routing.directions();
+  
+    dir.route({
+      locations: [
+        start,
+        end
+      ]
+  
+    });
+    console.log(start,end);
+  
+  
+    CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+      createStartMarker: (location) => {
+        var custom_icon;
+        var marker;
+        
+  
+        custom_icon = L.icon({
+          iconUrl: './assets/image/red.png',
+          iconSize: [20, 29],
+          iconAnchor: [10, 29],
+          popupAnchor: [0, -29]
+        });
+  
+        marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+        startLat = JSON.stringify(location.latLng.lat);
+        startLng = JSON.stringify(location.latLng.lng);
+        console.log(startLat,startLng);
+        return marker;
+        
+      },
+      
+  
+      createEndMarker: (location) => {
+        var custom_icon;
+        var marker;
+  
+        custom_icon = L.icon({
+          iconUrl: './assets/image/blue.png',
+          iconSize: [20, 29],
+          iconAnchor: [10, 29],
+          popupAnchor: [0, -29]
+        });
+  
+        marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+        
+        return marker;
+        
+      }
+    });
+  
+  
+  
+    map.addLayer(new CustomRouteLayer({
+      directions: dir,
+      fitBounds: true
+    }));
+  }
+  
+  
+  // function that runs when form submitted
+  function submitForm(event) {
+    event.preventDefault();
+  
+    // delete current map layer
+    map.remove();
+  
+  
+  
+  
+  
+  
+    // getting form data
+    start = document.getElementById("start").value;
+    end = document.getElementById("destination").value;
+  
+    // console.log(start)
+    // console.log(end)
+  
+    // bundle the data
+    var trip = {
+      origin: start,
+      destination: end
+    }
+  
+    savedTrips.push(trip);
+  
+    localStorage.setItem("trips", JSON.stringify(savedTrips))
+  
+    // console.log(trip);
+  
+    // run directions function
+    runDirection(start, end);
+  
+    // reset form
+    document.getElementById("form").reset();
+  }
+  
+  // asign the form to form variable
+  const form = document.getElementById('form');
+  
+  // call the submitForm() function when submitting the form
+  form.addEventListener('submit', submitForm);
+  
+  
+  var placesToSee = function () {
+
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-84.391502&lat_min=" + startLat + "&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
@@ -203,7 +217,8 @@ var placesToSee = function () {
       // whereTo = data.features[0].properties.name;
       // console.log(data.features);
       // console.log(startLat,startLong,whereTo);
-
+     
+console.log(startLat,startLng);
 
 
 
@@ -234,6 +249,8 @@ var placesToSee = function () {
 }
 var placesToSee2 = function () {
 
+  
+
   var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
@@ -246,7 +263,7 @@ var placesToSee2 = function () {
       // console.log(data.features);
       // console.log(startLat,startLong,whereTo);
 
-
+      console.log(startLat,startLng);
 
 
       for (var i = 0; i < data.features.length; i++) {
@@ -287,18 +304,23 @@ checkboxes.forEach(function (checkbox) {
     thingsToSee =
       Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
         .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
-        .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
+        .map(i => i.value)
+         // Use Array.map to extract only the checkbox values from the array of objects.
 
     console.log(thingsToSee)
+                                            
 
-
-    if (thingsToSee == "dining") {
-      activity = "foods"
+    if (thingsToSee == "attractions") {
+      activity = "amusements"
       $("#getDirections").on("click", function () {
         placesToSee()
+        
       })
+    }else {
+      document.getElementById("places-container").remove()
     }
-    else if (thingsToSee == "hotels") {
+
+    if (thingsToSee == "hotels") {
       activity = "accomodations"
       $("#getDirections").on("click", function () {
         placesToSee2()
