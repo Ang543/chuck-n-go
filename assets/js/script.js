@@ -123,6 +123,7 @@ function runDirection(start, end) {
       startLat = JSON.stringify(location.latLng.lat);
       startLng = JSON.stringify(location.latLng.lng);
       console.log(startLat, startLng);
+      
       return marker;
 
     },
@@ -140,7 +141,10 @@ function runDirection(start, end) {
       });
 
       marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-
+      endLat = JSON.stringify(location.latLng.lat);
+      endLng = JSON.stringify(location.latLng.lng);
+      console.log(endLat, endLng);
+      placesToSee()
       return marker;
 
     }
@@ -156,7 +160,7 @@ function runDirection(start, end) {
   }));
 
   // console.log('this is where placesToSee will be called')
-  placesToSee()
+ 
 }
 
 
@@ -207,8 +211,8 @@ form.addEventListener('submit', submitForm);
 
 var placesToSee = function () {
 
-  console.log('PLACES TO SEE')
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-84.391502&lat_min=34.052235&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  console.log(endLng)
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + startLng + "&lat_min=" + startLat + "&lon_max=" + endLng + "&lat_max=" + endLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
@@ -324,9 +328,8 @@ checkboxes.forEach(function (checkbox) {
 
     if (thingsToSee == "hotels") {
       activity = "accomodations"
-      $("#getDirections").on("click", function () {
-        placesToSee2()
-      })
+     
+      
 
     }
     if (thingsToSee == "scenic views") {
