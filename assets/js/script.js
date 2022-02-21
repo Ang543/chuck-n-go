@@ -1,6 +1,7 @@
 const jokeEl = document.getElementById('.jokeP')
-const fromEl = document.getElementById('from')
-const toEl = document.getElementById('to')
+const fromEl = document.getElementById('start')
+const toEl = document.getElementById('destination')
+let apiMQ = "XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"
 let apiOpenTrip = "5ae2e3f221c38a28845f05b604ac0aedf17596d60d10c95865fde816";
 var attractEl = document.querySelector("#attract");
 var scenicEL = document.querySelector("#scenic")
@@ -25,13 +26,7 @@ for (let i = 0; i < savedTrips.length; i++) {
   savedTripsDiv.append(newButton)
 }
 
-
-
-
-
-
 //get chuckjoke from api and display for user for every new trip
-//dennis
 function jokeData() {
   fetch("https://api.chucknorris.io/jokes/random")
     .then(response => {
@@ -190,8 +185,6 @@ $("#getDirections").on("click", function () {
 
 
 //call Mq to get route using user inputs
-//dennis
-
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
@@ -261,20 +254,25 @@ function runDirection(start, end) {
   }));
 }
 
+      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+
+      return marker;
+    }
+  });
+
+  map.addLayer(new CustomRouteLayer({
+    directions: dir,
+    fitBounds: true
+  }));
+
 
 // function that runs when form submitted
 function submitForm(event) {
   event.preventDefault();
 
-  // delete current map layer
-  map.remove();
-
   // getting form data
   start = document.getElementById("start").value;
   end = document.getElementById("destination").value;
-
-  console.log(start)
-  console.log(end)
 
   // bundle the data
   var trip = {
@@ -282,14 +280,19 @@ function submitForm(event) {
     destination: end
   }
 
+  //save to localStorage
+  var savedTrips = JSON.parse(localStorage.getItem("trips")) || []; // short circuit
   savedTrips.push(trip);
 
   localStorage.setItem("trips", JSON.stringify(savedTrips))
-
-  // console.log(trip);
+  renderHistory();
 
   // run directions function
   runDirection(start, end);
+  getLonLat(start, end);
+
+  //display places to see and list after user submits their input
+  document.getElementById("places").style.display = "block";
 
   // reset form
   document.getElementById("form").reset();
@@ -301,24 +304,36 @@ const form = document.getElementById('form');
 // call the submitForm() function when submitting the form
 form.addEventListener('submit', submitForm);
 
+//to get the lon and lat from the directions
+function getLonLat(start, end) {
+  fetch("http://www.mapquestapi.com/geocoding/v1/batch?key=" + apiMQ + "&location=" + start + "&location=" + end)
+    .then(response => {
+      return response.json()
+    })
+    .then(data => console.log(data));
 
+};
 
-// complete clear history button
- 
-//function clearHistory() {
-//localStorage.clear();
-//}
-
-//$("#clear-history").on("click", function() {
-//  localStorage.clear();
-//}
-
-//form.addEventListener(, clearHistory);
- 
-//(("#clear-history").bind("click"));
-
+//clear the history box
 $("#clear-history").bind("click", (function () {
-		
-	localStorage.clear();
-			
+
+  window.location.reload();
+  localStorage.clear();
+
 }));
+
+//to add the start and end from history to the map
+historyEl.addEventListener("click", function (event) {
+  var element = event.target;
+
+  if (element.matches(".history-button")) {
+    var dataO = element.getAttribute("data-origin");
+    var dataD = element.getAttribute("data-destination");
+    runDirection(dataO, dataD)
+  };
+
+  //display places to see and list after user selects a trip history
+  document.getElementById("places").style.display = "block";
+});
+
+renderHistory();
