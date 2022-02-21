@@ -213,7 +213,7 @@ form.addEventListener('submit', submitForm);
 //Opentripmap API code
 var placesToSee = function () {
 
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("https://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
@@ -253,7 +253,7 @@ var placesToSee2 = function () {
 
 
 
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("https://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
@@ -293,7 +293,7 @@ var placesToSee3 = function () {
 
 
 
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("https://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
@@ -375,7 +375,7 @@ checkboxes.forEach(function (checkbox) {
 
 //to get the lon and lat from the directions
 function getLonLat(start, end) {
-  fetch("http://www.mapquestapi.com/geocoding/v1/batch?key=" + apiMQ + "&location=" + start + "&location=" + end)
+  fetch("https://www.mapquestapi.com/geocoding/v1/batch?key=" + apiMQ + "&location=" + start + "&location=" + end)
     .then(response => {
       return response.json()
     })
