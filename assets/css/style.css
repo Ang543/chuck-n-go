@@ -72,7 +72,7 @@
       /* start input form */
 
       .formBlock {
-        font-family: 'Courier New', Courier, monospace;
+        font-family: 'Montserrat', sans-serif;
         background-color: #FFF;
         border: 1px solid #ddd;
         margin-bottom: 20px;
@@ -111,10 +111,6 @@
     /* end map input */
   /* end travel */
   /* start places to see */
-
-  #places {
-    display: none;
-  }
 
   #places-container {
     font-family: 'Montserrat', sans-serif;
