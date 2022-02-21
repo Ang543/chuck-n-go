@@ -69,18 +69,13 @@ showJoke = (dataObjects, div) => {
 }
 jokeData()
 
+
 // default map layer
 let map = L.map('map', {
   layers: MQ.mapLayer(),
   center: [40.0583, -74.4057],
   zoom: 8
 });
-
-
-
-
-
-
 
 function runDirection(start, end) {
 
@@ -114,6 +109,7 @@ function runDirection(start, end) {
         iconSize: [20, 29],
         iconAnchor: [10, 29],
         popupAnchor: [0, -29]
+
       });
 
       marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
@@ -155,11 +151,7 @@ function runDirection(start, end) {
         higherLat = endLat;
         higherLng = endLng;
       }
-
-
-
-
-
+      
       if (activity = "amusements") {
         placesToSee();
       }
@@ -174,10 +166,7 @@ function runDirection(start, end) {
 
     }
 
-
   });
-
-
 
   map.addLayer(new CustomRouteLayer({
     directions: dir,

@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
   <title>Chuck n Go</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -36,6 +38,7 @@
         <div>
           <h3>How do you want to travel today?</h3>
         </div>
+
         <span class="radiowrapper">
           <div class="col s4">
             <input type="radio" name="modes" id="car" value="car" checked />
@@ -68,6 +71,7 @@
         <div class="col s12 m6 l4">
           <input type="checkbox" name="things-input" id="checkbox4" value="dining" />
           <label for="checkbox4" class="ratiocheckbox">Dining</label>
+
         </div>
         
       </section>
@@ -113,6 +117,7 @@
     <script
       src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=XZSAH1ikLn8zpZjUGzEFqnthzNyKVjIY"></script>
     <script src='./assets/js/script.js'></script>
+
 </body>
 
 </html>
