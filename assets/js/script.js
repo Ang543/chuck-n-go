@@ -10,9 +10,14 @@ var entEl = document.querySelector("#ent")
 var savedTripsDiv = document.querySelector("#saved-trips-container");
 var modeChoice = document.querySelector('input[name="modes"]:checked').value;
 // var thingsToSee = [];
-
+var endLat = "";
+var endLng = "";
 var startLat = "";
 var startLng = "";
+var lowerLat = "";
+var higherLat = "";
+var lowerLng = "";
+var higherLng = "";
 var activity = "";
 var placesEl = document.querySelector("#places-container");
 var placesEl2 = document.querySelector("#places-container2");
@@ -123,7 +128,14 @@ function runDirection(start, end) {
       startLat = JSON.stringify(location.latLng.lat);
       startLng = JSON.stringify(location.latLng.lng);
       console.log(startLat, startLng);
-      
+      //    if(startLat >= endLat){
+      //  lowerLng === endLng;
+      // console.log(lowerLng);
+      // }else{
+      //  higherLng = startLng;
+      //   console.log(higherLng);
+      // }
+
       return marker;
 
     },
@@ -144,7 +156,22 @@ function runDirection(start, end) {
       endLat = JSON.stringify(location.latLng.lat);
       endLng = JSON.stringify(location.latLng.lng);
       console.log(endLat, endLng);
-      placesToSee()
+     
+      if(startLat >= endLat){
+       lowerLat = endLat;
+       lowerLng = endLng;
+       higherLat = startLat;
+       higherLng = startLng;
+      console.log(lowerLat,lowerLng);
+      }else {
+        lowerLat = startLat;
+       lowerLng = startLng;
+       higherLat = endLat;
+       higherLng = endLng;
+      }
+      
+
+     placesToSee()
       return marker;
 
     }
@@ -212,7 +239,7 @@ form.addEventListener('submit', submitForm);
 var placesToSee = function () {
 
   console.log(endLng)
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + startLng + "&lat_min=" + startLat + "&lon_max=" + endLng + "&lat_max=" + endLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=" + lowerLng + "&lat_min=" + lowerLat + "&lon_max=" + higherLng + "&lat_max=" + higherLat + "&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
@@ -255,9 +282,9 @@ var placesToSee = function () {
 }
 var placesToSee2 = function () {
 
+https://api.opentripmap.com/0.1/en/places/radius?radius=100&lon=-74.320096&lat=40.410167&src_geom=wikidata&src_attr=wikidata&kinds=" + activity + "&name=&rate=1&format=json&limit=10
 
-
-  var opentripUrl = ("http://api.opentripmap.com/0.1/en/places/bbox?lon_min=-74.320096&lat_min=40.410167&lon_max=-73.964609&lat_max=40.768952&kinds=" + activity + "&format=geojson&apikey=" + apiOpenTrip + "&limit=10");
+  var opentripUrl = ("https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=-84.320096&lat=30.410167&kinds=interesting_places&apikey=" + apiOpenTrip + "&limit=10");
 
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
