@@ -48,25 +48,25 @@ function jokeData() {
       }
       return response.json();
     })
-    .then(data => { 
+    .then(data => {
       console.log(data.value)
-      document.getElementById("jokeP").append(data.value)     
+      document.getElementById("jokeP").append(data.value)
     })
     .catch(error => {
       console.log(error)
     });
-  }
+}
 
-  showJoke = (dataObjects, div) => {
-    const dataDiv = document.querySelector(div)
-    dataObjects.forEach(dataObject => {
-        const dataElement = document.createElement('p')
-        dataElement.innerText= `Name: ${dataObject.name}`
-        dataDiv.append(dataElement)
-    })
+showJoke = (dataObjects, div) => {
+  const dataDiv = document.querySelector(div)
+  dataObjects.forEach(dataObject => {
+    const dataElement = document.createElement('p')
+    dataElement.innerText = `Name: ${dataObject.name}`
+    dataDiv.append(dataElement)
+  })
 
 }
-  jokeData()
+jokeData()
 
   //call Mq to get route using user inputs
 // default map layer
@@ -144,7 +144,6 @@ function runDirection(start, end) {
         higherLat = endLat;
         higherLng = endLng;
       }
-
       if (activity = "amusements") {
         placesToSee();
       }
@@ -171,6 +170,11 @@ function submitForm(event) {
 
   // delete current map layer
   // map.remove();
+
+
+
+
+
 
   // getting form data
   start = document.getElementById("start").value;
@@ -214,7 +218,6 @@ var placesToSee = function () {
   fetch(opentripUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
-
 
 
       console.log(startLat, startLng);
