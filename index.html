@@ -33,8 +33,47 @@
 
   <!-- start of the travel section -->
   <div class="row">
-    <div class="col s12 l6" id="travel">
-        <input type="radio" name="modes" id="car" value="car" checked />
+    <div class="col s12 l6">
+      <section id="form1" class>
+        <div>
+          <h3>How do you want to travel today?</h3>
+        </div>
+        <span class="radiowrapper">
+          <div class="col s4">
+            <input type="radio" name="modes" id="car" value="car" checked />
+            <label for="car" class="ratiocheckbox">Car</label>
+          </div>
+          <div class="col s4">
+            <input type="radio" name="modes" id="walk" value="walk" />
+            <label for="walk" class="ratiocheckbox">Walk</label>
+          </div>
+          <div class="col s4">
+            <input type="radio" name="modes" id="bus" value="bus" />
+            <label for="bus" class="ratiocheckbox">Bus</label>
+          </div>
+        </span>
+      </section>
+    </div>
+
+    <div id="things" class="row">
+      <h3>Things you want to see along your route:</h3>
+      <section class="checkbox-wrapper col s12 m6 l6">
+        <div class="col s12 m6 l4" >
+          <input type="checkbox" name="things-input" id="checkbox1" value="attractions" />
+          <label for="checkbox1" class="ratiocheckbox">Attractions</label>
+        </div>
+       
+        <div class="col s12 m6 l4">
+          <input type="checkbox" name="things-input" id="checkbox3" value="hotels" />
+          <label for="checkbox3" class="ratiocheckbox">Hotels</label>
+        </div>
+        <div class="col s12 m6 l4">
+          <input type="checkbox" name="things-input" id="checkbox4" value="dining" />
+          <label for="checkbox4" class="ratiocheckbox">Dining</label>
+        </div>
+        
+      </section>
+
     </div>
   </div>
   <!-- end of the travel section -->
@@ -67,14 +106,14 @@
   </div>
   <!-- end of the things to do section -->
 
-  <!-- beginning of the start and end form box-->
-  <section class="row">
-    <div class="formBlock col s12 m5 l5 center-align">
-      <form id="form">
-        <input type="text" name="start" class="input" id="start" placeholder="Choose starting point" />
-        <input type="text" name="end" class="input" id="destination" placeholder="Choose final destination" />
-        <button class="btn btn-primary mb-3" type="submit" id="getDirections">Get Directions</button>
-      </form>
+    <div class="row">
+      <div>
+        <h2 class="subtitle col s6">places to see on this trip<span id="search-term"></span></h2>
+      </div>
+      <div id="places-container" class="col s2 list"></div>
+      <div id="places-container2" class="col s2 list2"></div>
+      <div id="places-container3" class="col s2 list3"></div>
+
     </div>
     <div class="col s0 m1 l1"></div>
     <div class="col s12 m6 l6" id='map'></div>
